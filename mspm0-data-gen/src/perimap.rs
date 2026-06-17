@@ -30,6 +30,7 @@ pub static PERIMAP: RegexMap<&str> = RegexMap::new(&[
     ("mspm0l222x:spi", "v4"),
     ("mspm0g151x:spi", "v5"),
     ("mspm0g351x:spi", "v5"),
+    (".*:spi", "v1"), // not confirmed that this works on other families yet
     ("mspm0c110x:sysctl", "c110x"),
     ("mspm0c1105_c1106:sysctl", "c110x"),
     ("msps003fx:sysctl", "c110x"),
