@@ -1,4 +1,4 @@
-block/SPI0:
+block/SPI:
   description: PERIPHERALREGION.
   items:
   - name: GPRCM

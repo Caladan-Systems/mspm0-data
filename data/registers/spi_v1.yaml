@@ -49,7 +49,7 @@ block/INT_EVENT0:
     byte_offset: 40
     access: Write
     fieldset: ICLR
-block/SPI0:
+block/SPI:
   description: PERIPHERALREGION.
   items:
   - name: SGPRCM

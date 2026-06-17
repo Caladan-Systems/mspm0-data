@@ -1,190 +1,190 @@
-block/SPI0:
+block/SPI:
   description: PERIPHERALREGION.
   items:
-  - name: SPI0_GPRCM
+  - name: GPRCM
     array:
       len: 1
       stride: 24
     byte_offset: 2048
-    block: SPI0_GPRCM
-  - name: SPI0_CLKDIV
+    block: GPRCM
+  - name: CLKDIV
     description: Clock Divider.
     byte_offset: 4096
-    fieldset: SPI0_CLKDIV
-  - name: SPI0_CLKSEL
+    fieldset: CLKDIV
+  - name: CLKSEL
     description: Clock Select for Ultra Low Power peripherals.
     byte_offset: 4100
-    fieldset: SPI0_CLKSEL
-  - name: SPI0_PDBGCTL
+    fieldset: CLKSEL
+  - name: PDBGCTL
     description: Peripheral Debug Control.
     byte_offset: 4120
-    fieldset: SPI0_PDBGCTL
-  - name: SPI0_INT_EVENT0
+    fieldset: PDBGCTL
+  - name: INT_EVENT0
     array:
       len: 1
       stride: 44
     byte_offset: 4128
-    block: SPI0_INT_EVENT0
-  - name: SPI0_INT_EVENT1
+    block: INT_EVENT0
+  - name: INT_EVENT1
     array:
       len: 1
       stride: 44
     byte_offset: 4176
-    block: SPI0_INT_EVENT1
-  - name: SPI0_INT_EVENT2
+    block: INT_EVENT1
+  - name: INT_EVENT2
     array:
       len: 1
       stride: 44
     byte_offset: 4224
-    block: SPI0_INT_EVENT2
-  - name: SPI0_EVT_MODE
+    block: INT_EVENT2
+  - name: EVT_MODE
     description: Event Mode.
     byte_offset: 4320
-    fieldset: SPI0_EVT_MODE
-  - name: SPI0_CTL0
+    fieldset: EVT_MODE
+  - name: CTL0
     description: SPI control register 0.
     byte_offset: 4352
-    fieldset: SPI0_CTL0
-  - name: SPI0_CTL1
+    fieldset: CTL0
+  - name: CTL1
     description: SPI control register 1.
     byte_offset: 4356
-    fieldset: SPI0_CTL1
-  - name: SPI0_CLKCTL
+    fieldset: CTL1
+  - name: CLKCTL
     description: Clock prescaler and divider register.
     byte_offset: 4360
-    fieldset: SPI0_CLKCTL
-  - name: SPI0_IFLS
+    fieldset: CLKCTL
+  - name: IFLS
     description: UART Interrupt FIFO Level Select Register.
     byte_offset: 4364
-    fieldset: SPI0_IFLS
-  - name: SPI0_STAT
+    fieldset: IFLS
+  - name: STAT
     description: Status Register.
     byte_offset: 4368
     access: Read
-    fieldset: SPI0_STAT
-  - name: SPI0_RXDATA
+    fieldset: STAT
+  - name: RXDATA
     description: RXDATA Register.
     byte_offset: 4400
     access: Read
-    fieldset: SPI0_RXDATA
-  - name: SPI0_TXDATA
+    fieldset: RXDATA
+  - name: TXDATA
     description: TXDATA Register.
     byte_offset: 4416
-    fieldset: SPI0_TXDATA
-block/SPI0_GPRCM:
+    fieldset: TXDATA
+block/GPRCM:
   items:
-  - name: SPI0_PWREN
+  - name: PWREN
     description: Power enable.
     byte_offset: 0
-    fieldset: SPI0_PWREN
-  - name: SPI0_RSTCTL
+    fieldset: PWREN
+  - name: RSTCTL
     description: Reset Control.
     byte_offset: 4
     access: Write
-    fieldset: SPI0_RSTCTL
-  - name: SPI0_CLKCFG
+    fieldset: RSTCTL
+  - name: CLKCFG
     description: Peripheral Clock Configuration Register.
     byte_offset: 8
-    fieldset: SPI0_CLKCFG
-  - name: SPI0_GPRCM_STAT
+    fieldset: CLKCFG
+  - name: GPRCM_STAT
     description: Status Register.
     byte_offset: 20
     access: Read
-    fieldset: SPI0_GPRCM_STAT
-block/SPI0_INT_EVENT0:
+    fieldset: GPRCM_STAT
+block/INT_EVENT0:
   items:
-  - name: SPI0_INT_EVENT0_IIDX
+  - name: INT_EVENT0_IIDX
     description: Interrupt Index Register.
     byte_offset: 0
     access: Read
-    fieldset: SPI0_INT_EVENT0_IIDX
-  - name: SPI0_INT_EVENT0_IMASK
+    fieldset: INT_EVENT0_IIDX
+  - name: INT_EVENT0_IMASK
     description: Interrupt mask.
     byte_offset: 8
-    fieldset: SPI0_INT_EVENT0_IMASK
-  - name: SPI0_INT_EVENT0_RIS
+    fieldset: INT_EVENT0_IMASK
+  - name: INT_EVENT0_RIS
     description: Raw interrupt status.
     byte_offset: 16
     access: Read
-    fieldset: SPI0_INT_EVENT0_RIS
-  - name: SPI0_INT_EVENT0_MIS
+    fieldset: INT_EVENT0_RIS
+  - name: INT_EVENT0_MIS
     description: Masked interrupt status.
     byte_offset: 24
     access: Read
-    fieldset: SPI0_INT_EVENT0_MIS
-  - name: SPI0_INT_EVENT0_ISET
+    fieldset: INT_EVENT0_MIS
+  - name: INT_EVENT0_ISET
     description: Interrupt set.
     byte_offset: 32
     access: Write
-    fieldset: SPI0_INT_EVENT0_ISET
-  - name: SPI0_INT_EVENT0_ICLR
+    fieldset: INT_EVENT0_ISET
+  - name: INT_EVENT0_ICLR
     description: Interrupt clear.
     byte_offset: 40
     access: Write
-    fieldset: SPI0_INT_EVENT0_ICLR
-block/SPI0_INT_EVENT1:
+    fieldset: INT_EVENT0_ICLR
+block/INT_EVENT1:
   items:
-  - name: SPI0_INT_EVENT1_IIDX
+  - name: INT_EVENT1_IIDX
     description: Interrupt Index Register.
     byte_offset: 0
     access: Read
-    fieldset: SPI0_INT_EVENT1_IIDX
-  - name: SPI0_INT_EVENT1_IMASK
+    fieldset: INT_EVENT1_IIDX
+  - name: INT_EVENT1_IMASK
     description: Interrupt mask.
     byte_offset: 8
-    fieldset: SPI0_INT_EVENT1_IMASK
-  - name: SPI0_INT_EVENT1_RIS
+    fieldset: INT_EVENT1_IMASK
+  - name: INT_EVENT1_RIS
     description: Raw interrupt status.
     byte_offset: 16
     access: Read
-    fieldset: SPI0_INT_EVENT1_RIS
-  - name: SPI0_INT_EVENT1_MIS
+    fieldset: INT_EVENT1_RIS
+  - name: INT_EVENT1_MIS
     description: Masked interrupt status.
     byte_offset: 24
     access: Read
-    fieldset: SPI0_INT_EVENT1_MIS
-  - name: SPI0_INT_EVENT1_ISET
+    fieldset: INT_EVENT1_MIS
+  - name: INT_EVENT1_ISET
     description: Interrupt set.
     byte_offset: 32
     access: Write
-    fieldset: SPI0_INT_EVENT1_ISET
-  - name: SPI0_INT_EVENT1_ICLR
+    fieldset: INT_EVENT1_ISET
+  - name: INT_EVENT1_ICLR
     description: Interrupt clear.
     byte_offset: 40
     access: Write
-    fieldset: SPI0_INT_EVENT1_ICLR
-block/SPI0_INT_EVENT2:
+    fieldset: INT_EVENT1_ICLR
+block/INT_EVENT2:
   items:
-  - name: SPI0_INT_EVENT2_IIDX
+  - name: INT_EVENT2_IIDX
     description: Interrupt Index Register.
     byte_offset: 0
     access: Read
-    fieldset: SPI0_INT_EVENT2_IIDX
-  - name: SPI0_INT_EVENT2_IMASK
+    fieldset: INT_EVENT2_IIDX
+  - name: INT_EVENT2_IMASK
     description: Interrupt mask.
     byte_offset: 8
-    fieldset: SPI0_INT_EVENT2_IMASK
-  - name: SPI0_INT_EVENT2_RIS
+    fieldset: INT_EVENT2_IMASK
+  - name: INT_EVENT2_RIS
     description: Raw interrupt status.
     byte_offset: 16
     access: Read
-    fieldset: SPI0_INT_EVENT2_RIS
-  - name: SPI0_INT_EVENT2_MIS
+    fieldset: INT_EVENT2_RIS
+  - name: INT_EVENT2_MIS
     description: Masked interrupt status.
     byte_offset: 24
     access: Read
-    fieldset: SPI0_INT_EVENT2_MIS
-  - name: SPI0_INT_EVENT2_ISET
+    fieldset: INT_EVENT2_MIS
+  - name: INT_EVENT2_ISET
     description: Interrupt set.
     byte_offset: 32
     access: Write
-    fieldset: SPI0_INT_EVENT2_ISET
-  - name: SPI0_INT_EVENT2_ICLR
+    fieldset: INT_EVENT2_ISET
+  - name: INT_EVENT2_ICLR
     description: Interrupt clear.
     byte_offset: 40
     access: Write
-    fieldset: SPI0_INT_EVENT2_ICLR
-fieldset/SPI0_CLKCFG:
+    fieldset: INT_EVENT2_ICLR
+fieldset/CLKCFG:
   description: Peripheral Clock Configuration Register.
   fields:
   - name: BLOCKASYNC
@@ -192,7 +192,7 @@ fieldset/SPI0_CLKCFG:
     bit_offset: 8
     bit_size: 1
     enum: BLOCKASYNC
-fieldset/SPI0_CLKCTL:
+fieldset/CLKCTL:
   description: Clock prescaler and divider register.
   fields:
   - name: SCR
@@ -203,7 +203,7 @@ fieldset/SPI0_CLKCTL:
     description: 'Delayed sampling value. In controller mode the data on the input pin will be delayed sampled by the defined clock cycles of internal functional clock hence relaxing the setup time of input data. This setting is useful in systems where the board delays and external peripheral delays are more than the input setup time of the controller. Please refer to the datasheet for values of controller input setup time and assess what DSAMPLE value meets the requirement of the system. Note: High values of DSAMPLE can cause HOLD time violations and must be factored in the calculations.'
     bit_offset: 28
     bit_size: 4
-fieldset/SPI0_CLKDIV:
+fieldset/CLKDIV:
   description: Clock Divider.
   fields:
   - name: RATIO
@@ -211,7 +211,7 @@ fieldset/SPI0_CLKDIV:
     bit_offset: 0
     bit_size: 3
     enum: RATIO
-fieldset/SPI0_CLKSEL:
+fieldset/CLKSEL:
   description: Clock Select for Ultra Low Power peripherals.
   fields:
   - name: LFCLK_SEL
@@ -229,7 +229,7 @@ fieldset/SPI0_CLKSEL:
     bit_offset: 3
     bit_size: 1
     enum: SYSCLK_SEL
-fieldset/SPI0_CTL0:
+fieldset/CTL0:
   description: SPI control register 0.
   fields:
   - name: DSS
@@ -267,14 +267,14 @@ fieldset/SPI0_CTL0:
     bit_offset: 14
     bit_size: 1
     enum: CSCLR
-fieldset/SPI0_CTL1:
+fieldset/CTL1:
   description: SPI control register 1.
   fields:
   - name: ENABLE
     description: SPI enable.
     bit_offset: 0
     bit_size: 1
-    enum: SPI0_CTL1_ENABLE
+    enum: CTL1_ENABLE
   - name: LBM
     description: Loop back mode.
     bit_offset: 1
@@ -334,7 +334,7 @@ fieldset/SPI0_CTL1:
     description: Receive Timeout (only for Peripheral mode) Defines the number of Clock Cycles before after which the Receive Timeout flag RTOUT is set. The time is calculated using the control register for the clock selection and divider in the Controller mode configuration. A value of 0 disables this function.
     bit_offset: 24
     bit_size: 6
-fieldset/SPI0_EVT_MODE:
+fieldset/EVT_MODE:
   description: Event Mode.
   fields:
   - name: INT0_CFG
@@ -352,7 +352,7 @@ fieldset/SPI0_EVT_MODE:
     bit_offset: 4
     bit_size: 2
     enum: INT2_CFG
-fieldset/SPI0_GPRCM_STAT:
+fieldset/GPRCM_STAT:
   description: Status Register.
   fields:
   - name: RESETSTKY
@@ -360,7 +360,7 @@ fieldset/SPI0_GPRCM_STAT:
     bit_offset: 16
     bit_size: 1
     enum: RESETSTKY
-fieldset/SPI0_IFLS:
+fieldset/IFLS:
   description: UART Interrupt FIFO Level Select Register.
   fields:
   - name: TXIFLSEL
@@ -373,426 +373,426 @@ fieldset/SPI0_IFLS:
     bit_offset: 3
     bit_size: 3
     enum: RXIFLSEL
-fieldset/SPI0_INT_EVENT0_ICLR:
+fieldset/INT_EVENT0_ICLR:
   description: Interrupt clear.
   fields:
   - name: RXFIFO_OVF
     description: Clear RXFIFO overflow event.
     bit_offset: 0
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ICLR_RXFIFO_OVF
+    enum: INT_EVENT0_ICLR_RXFIFO_OVF
   - name: PER
     description: Clear Parity error event.
     bit_offset: 1
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ICLR_PER
+    enum: INT_EVENT0_ICLR_PER
   - name: RTOUT
     description: Clear SPI Receive Time-Out Event.
     bit_offset: 2
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ICLR_RTOUT
+    enum: INT_EVENT0_ICLR_RTOUT
   - name: RX
     description: Clear Receive FIFO event.
     bit_offset: 3
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ICLR_RX
+    enum: INT_EVENT0_ICLR_RX
   - name: TX
     description: Clear Transmit FIFO event.
     bit_offset: 4
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ICLR_TX
+    enum: INT_EVENT0_ICLR_TX
   - name: TXEMPTY
     description: Clear Transmit FIFO Empty event.
     bit_offset: 5
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ICLR_TXEMPTY
+    enum: INT_EVENT0_ICLR_TXEMPTY
   - name: IDLE
     description: Clear SPI IDLE mode event.
     bit_offset: 6
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ICLR_IDLE
+    enum: INT_EVENT0_ICLR_IDLE
   - name: DMA_DONE_RX
     description: Clear DMA Done 1 event for RX.
     bit_offset: 7
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ICLR_DMA_DONE_RX
+    enum: INT_EVENT0_ICLR_DMA_DONE_RX
   - name: DMA_DONE_TX
     description: Clear DMA Done 1 event for TX.
     bit_offset: 8
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ICLR_DMA_DONE_TX
+    enum: INT_EVENT0_ICLR_DMA_DONE_TX
   - name: TXFIFO_UNF
     description: Clear TXFIFO underflow event.
     bit_offset: 9
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ICLR_TXFIFO_UNF
+    enum: INT_EVENT0_ICLR_TXFIFO_UNF
   - name: RXFULL
     description: Clear RX FIFO underflow event.
     bit_offset: 10
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ICLR_RXFULL
-fieldset/SPI0_INT_EVENT0_IIDX:
+    enum: INT_EVENT0_ICLR_RXFULL
+fieldset/INT_EVENT0_IIDX:
   description: Interrupt Index Register.
   fields:
   - name: STAT
     description: Interrupt index status.
     bit_offset: 0
     bit_size: 8
-    enum: SPI0_INT_EVENT0_IIDX_STAT
-fieldset/SPI0_INT_EVENT0_IMASK:
+    enum: INT_EVENT0_IIDX_STAT
+fieldset/INT_EVENT0_IMASK:
   description: Interrupt mask.
   fields:
   - name: RXFIFO_OVF
     description: RXFIFO overflow event mask.
     bit_offset: 0
     bit_size: 1
-    enum: SPI0_INT_EVENT0_IMASK_RXFIFO_OVF
+    enum: INT_EVENT0_IMASK_RXFIFO_OVF
   - name: PER
     description: Parity error event mask.
     bit_offset: 1
     bit_size: 1
-    enum: SPI0_INT_EVENT0_IMASK_PER
+    enum: INT_EVENT0_IMASK_PER
   - name: RTOUT
     description: Enable SPI Receive Time-Out event mask.
     bit_offset: 2
     bit_size: 1
-    enum: SPI0_INT_EVENT0_IMASK_RTOUT
+    enum: INT_EVENT0_IMASK_RTOUT
   - name: RX
     description: Receive FIFO event.This interrupt is set if the selected Receive FIFO level has been reached.
     bit_offset: 3
     bit_size: 1
-    enum: SPI0_INT_EVENT0_IMASK_RX
+    enum: INT_EVENT0_IMASK_RX
   - name: TX
     description: Transmit FIFO event mask.
     bit_offset: 4
     bit_size: 1
-    enum: SPI0_INT_EVENT0_IMASK_TX
+    enum: INT_EVENT0_IMASK_TX
   - name: TXEMPTY
     description: Transmit FIFO Empty event mask.
     bit_offset: 5
     bit_size: 1
-    enum: SPI0_INT_EVENT0_IMASK_TXEMPTY
+    enum: INT_EVENT0_IMASK_TXEMPTY
   - name: IDLE
     description: SPI Idle event mask.
     bit_offset: 6
     bit_size: 1
-    enum: SPI0_INT_EVENT0_IMASK_IDLE
+    enum: INT_EVENT0_IMASK_IDLE
   - name: DMA_DONE_RX
     description: DMA Done 1 event for RX event mask.
     bit_offset: 7
     bit_size: 1
-    enum: SPI0_INT_EVENT0_IMASK_DMA_DONE_RX
+    enum: INT_EVENT0_IMASK_DMA_DONE_RX
   - name: DMA_DONE_TX
     description: DMA Done 1 event for TX event mask.
     bit_offset: 8
     bit_size: 1
-    enum: SPI0_INT_EVENT0_IMASK_DMA_DONE_TX
+    enum: INT_EVENT0_IMASK_DMA_DONE_TX
   - name: TXFIFO_UNF
     description: TX FIFO underflow interrupt mask.
     bit_offset: 9
     bit_size: 1
-    enum: SPI0_INT_EVENT0_IMASK_TXFIFO_UNF
+    enum: INT_EVENT0_IMASK_TXFIFO_UNF
   - name: RXFULL
     description: RX FIFO Full Interrupt Mask.
     bit_offset: 10
     bit_size: 1
-    enum: SPI0_INT_EVENT0_IMASK_RXFULL
-fieldset/SPI0_INT_EVENT0_ISET:
+    enum: INT_EVENT0_IMASK_RXFULL
+fieldset/INT_EVENT0_ISET:
   description: Interrupt set.
   fields:
   - name: RXFIFO_OVF
     description: Set RXFIFO overflow event.
     bit_offset: 0
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ISET_RXFIFO_OVF
+    enum: INT_EVENT0_ISET_RXFIFO_OVF
   - name: PER
     description: Set Parity error event.
     bit_offset: 1
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ISET_PER
+    enum: INT_EVENT0_ISET_PER
   - name: RTOUT
     description: Set SPI Receive Time-Out Event.
     bit_offset: 2
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ISET_RTOUT
+    enum: INT_EVENT0_ISET_RTOUT
   - name: RX
     description: Set Receive FIFO event.
     bit_offset: 3
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ISET_RX
+    enum: INT_EVENT0_ISET_RX
   - name: TX
     description: Set Transmit FIFO event.
     bit_offset: 4
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ISET_TX
+    enum: INT_EVENT0_ISET_TX
   - name: TXEMPTY
     description: Set Transmit FIFO Empty event.
     bit_offset: 5
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ISET_TXEMPTY
+    enum: INT_EVENT0_ISET_TXEMPTY
   - name: IDLE
     description: Set SPI IDLE mode event.
     bit_offset: 6
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ISET_IDLE
+    enum: INT_EVENT0_ISET_IDLE
   - name: DMA_DONE_RX
     description: Set DMA Done 1 event for RX.
     bit_offset: 7
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ISET_DMA_DONE_RX
+    enum: INT_EVENT0_ISET_DMA_DONE_RX
   - name: DMA_DONE_TX
     description: Set DMA Done 1 event for TX.
     bit_offset: 8
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ISET_DMA_DONE_TX
+    enum: INT_EVENT0_ISET_DMA_DONE_TX
   - name: TXFIFO_UNF
     description: Set TX FIFO Underflow Event.
     bit_offset: 9
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ISET_TXFIFO_UNF
+    enum: INT_EVENT0_ISET_TXFIFO_UNF
   - name: RXFULL
     description: Set RX FIFO Full Event.
     bit_offset: 10
     bit_size: 1
-    enum: SPI0_INT_EVENT0_ISET_RXFULL
-fieldset/SPI0_INT_EVENT0_MIS:
+    enum: INT_EVENT0_ISET_RXFULL
+fieldset/INT_EVENT0_MIS:
   description: Masked interrupt status.
   fields:
   - name: RXFIFO_OVF
     description: Masked RXFIFO overflow event. This interrupt is set if an RX FIFO overflow has been detected.
     bit_offset: 0
     bit_size: 1
-    enum: SPI0_INT_EVENT0_MIS_RXFIFO_OVF
+    enum: INT_EVENT0_MIS_RXFIFO_OVF
   - name: PER
     description: 'Masked Parity error event: this bit if a Parity error has been detected.'
     bit_offset: 1
     bit_size: 1
-    enum: SPI0_INT_EVENT0_MIS_PER
+    enum: INT_EVENT0_MIS_PER
   - name: RTOUT
     description: Masked SPI Receive Time-Out Interrupt.
     bit_offset: 2
     bit_size: 1
-    enum: SPI0_INT_EVENT0_MIS_RTOUT
+    enum: INT_EVENT0_MIS_RTOUT
   - name: RX
     description: Masked receive FIFO event.This interrupt is set if the selected Receive FIFO level has been reached.
     bit_offset: 3
     bit_size: 1
-    enum: SPI0_INT_EVENT0_MIS_RX
+    enum: INT_EVENT0_MIS_RX
   - name: TX
     description: Masked Transmit FIFO event. This interrupt is set if the selected Transmit FIFO level has been reached.
     bit_offset: 4
     bit_size: 1
-    enum: SPI0_INT_EVENT0_MIS_TX
+    enum: INT_EVENT0_MIS_TX
   - name: TXEMPTY
     description: Masked Transmit FIFO Empty event.
     bit_offset: 5
     bit_size: 1
-    enum: SPI0_INT_EVENT0_MIS_TXEMPTY
+    enum: INT_EVENT0_MIS_TXEMPTY
   - name: IDLE
     description: Masked SPI IDLE mode event.
     bit_offset: 6
     bit_size: 1
-    enum: SPI0_INT_EVENT0_MIS_IDLE
+    enum: INT_EVENT0_MIS_IDLE
   - name: DMA_DONE_RX
     description: Masked DMA Done 1 event for RX.
     bit_offset: 7
     bit_size: 1
-    enum: SPI0_INT_EVENT0_MIS_DMA_DONE_RX
+    enum: INT_EVENT0_MIS_DMA_DONE_RX
   - name: DMA_DONE_TX
     description: Masked DMA Done 1 event for TX.
     bit_offset: 8
     bit_size: 1
-    enum: SPI0_INT_EVENT0_MIS_DMA_DONE_TX
+    enum: INT_EVENT0_MIS_DMA_DONE_TX
   - name: TXFIFO_UNF
     description: TX FIFO underflow interrupt.
     bit_offset: 9
     bit_size: 1
-    enum: SPI0_INT_EVENT0_MIS_TXFIFO_UNF
+    enum: INT_EVENT0_MIS_TXFIFO_UNF
   - name: RXFULL
     description: RX FIFO Full Interrupt.
     bit_offset: 10
     bit_size: 1
-    enum: SPI0_INT_EVENT0_MIS_RXFULL
-fieldset/SPI0_INT_EVENT0_RIS:
+    enum: INT_EVENT0_MIS_RXFULL
+fieldset/INT_EVENT0_RIS:
   description: Raw interrupt status.
   fields:
   - name: RXFIFO_OVF
     description: RXFIFO overflow event. This interrupt is set if an RX FIFO overflow has been detected.
     bit_offset: 0
     bit_size: 1
-    enum: SPI0_INT_EVENT0_RIS_RXFIFO_OVF
+    enum: INT_EVENT0_RIS_RXFIFO_OVF
   - name: PER
     description: 'Parity error event: this bit is set if a Parity error has been detected.'
     bit_offset: 1
     bit_size: 1
-    enum: SPI0_INT_EVENT0_RIS_PER
+    enum: INT_EVENT0_RIS_PER
   - name: RTOUT
     description: SPI Receive Time-Out event.
     bit_offset: 2
     bit_size: 1
-    enum: SPI0_INT_EVENT0_RIS_RTOUT
+    enum: INT_EVENT0_RIS_RTOUT
   - name: RX
     description: Receive FIFO event.This interrupt is set if the selected Receive FIFO level has been reached.
     bit_offset: 3
     bit_size: 1
-    enum: SPI0_INT_EVENT0_RIS_RX
+    enum: INT_EVENT0_RIS_RX
   - name: TX
     description: Transmit FIFO event..This interrupt is set if the selected Transmit FIFO level has been reached.
     bit_offset: 4
     bit_size: 1
-    enum: SPI0_INT_EVENT0_RIS_TX
+    enum: INT_EVENT0_RIS_TX
   - name: TXEMPTY
     description: Transmit FIFO Empty interrupt mask. This interrupt is set if all data in the Transmit FIFO have been move to the shift register.
     bit_offset: 5
     bit_size: 1
-    enum: SPI0_INT_EVENT0_RIS_TXEMPTY
+    enum: INT_EVENT0_RIS_TXEMPTY
   - name: IDLE
     description: SPI has done finished transfers and changed into IDLE mode. This bit is set when BUSY goes low.
     bit_offset: 6
     bit_size: 1
-    enum: SPI0_INT_EVENT0_RIS_IDLE
+    enum: INT_EVENT0_RIS_IDLE
   - name: DMA_DONE_RX
     description: DMA Done 1 event for RX. This interrupt is set if the RX DMA channel sends the DONE signal. This allows the handling of the DMA event inside the mapped peripheral.
     bit_offset: 7
     bit_size: 1
-    enum: SPI0_INT_EVENT0_RIS_DMA_DONE_RX
+    enum: INT_EVENT0_RIS_DMA_DONE_RX
   - name: DMA_DONE_TX
     description: DMA Done 1 event for TX. This interrupt is set if the TX DMA channel sends the DONE signal. This allows the handling of the DMA event inside the mapped peripheral.
     bit_offset: 8
     bit_size: 1
-    enum: SPI0_INT_EVENT0_RIS_DMA_DONE_TX
+    enum: INT_EVENT0_RIS_DMA_DONE_TX
   - name: TXFIFO_UNF
     description: TX FIFO Underflow Interrupt.
     bit_offset: 9
     bit_size: 1
-    enum: SPI0_INT_EVENT0_RIS_TXFIFO_UNF
+    enum: INT_EVENT0_RIS_TXFIFO_UNF
   - name: RXFULL
     description: RX FIFO Full Interrupt.
     bit_offset: 10
     bit_size: 1
-    enum: SPI0_INT_EVENT0_RIS_RXFULL
-fieldset/SPI0_INT_EVENT1_ICLR:
+    enum: INT_EVENT0_RIS_RXFULL
+fieldset/INT_EVENT1_ICLR:
   description: Interrupt clear.
   fields:
   - name: RTOUT
     description: Clear SPI Receive Time-Out event.
     bit_offset: 2
     bit_size: 1
-    enum: SPI0_INT_EVENT1_ICLR_RTOUT
+    enum: INT_EVENT1_ICLR_RTOUT
   - name: RX
     description: Clear Receive FIFO event.
     bit_offset: 3
     bit_size: 1
-    enum: SPI0_INT_EVENT1_ICLR_RX
-fieldset/SPI0_INT_EVENT1_IIDX:
+    enum: INT_EVENT1_ICLR_RX
+fieldset/INT_EVENT1_IIDX:
   description: Interrupt Index Register.
   fields:
   - name: STAT
     description: Interrupt index status.
     bit_offset: 0
     bit_size: 8
-    enum: SPI0_INT_EVENT1_IIDX_STAT
-fieldset/SPI0_INT_EVENT1_IMASK:
+    enum: INT_EVENT1_IIDX_STAT
+fieldset/INT_EVENT1_IMASK:
   description: Interrupt mask.
   fields:
   - name: RTOUT
     description: SPI Receive Time-Out event mask.
     bit_offset: 2
     bit_size: 1
-    enum: SPI0_INT_EVENT1_IMASK_RTOUT
+    enum: INT_EVENT1_IMASK_RTOUT
   - name: RX
     description: Receive FIFO event mask.
     bit_offset: 3
     bit_size: 1
-    enum: SPI0_INT_EVENT1_IMASK_RX
-fieldset/SPI0_INT_EVENT1_ISET:
+    enum: INT_EVENT1_IMASK_RX
+fieldset/INT_EVENT1_ISET:
   description: Interrupt set.
   fields:
   - name: RTOUT
     description: Set SPI Receive Time-Out event.
     bit_offset: 2
     bit_size: 1
-    enum: SPI0_INT_EVENT1_ISET_RTOUT
+    enum: INT_EVENT1_ISET_RTOUT
   - name: RX
     description: Set Receive FIFO event.
     bit_offset: 3
     bit_size: 1
-    enum: SPI0_INT_EVENT1_ISET_RX
-fieldset/SPI0_INT_EVENT1_MIS:
+    enum: INT_EVENT1_ISET_RX
+fieldset/INT_EVENT1_MIS:
   description: Masked interrupt status.
   fields:
   - name: RTOUT
     description: SPI Receive Time-Out event mask.
     bit_offset: 2
     bit_size: 1
-    enum: SPI0_INT_EVENT1_MIS_RTOUT
+    enum: INT_EVENT1_MIS_RTOUT
   - name: RX
     description: Receive FIFO event mask.
     bit_offset: 3
     bit_size: 1
-    enum: SPI0_INT_EVENT1_MIS_RX
-fieldset/SPI0_INT_EVENT1_RIS:
+    enum: INT_EVENT1_MIS_RX
+fieldset/INT_EVENT1_RIS:
   description: Raw interrupt status.
   fields:
   - name: RTOUT
     description: SPI Receive Time-Out Event.
     bit_offset: 2
     bit_size: 1
-    enum: SPI0_INT_EVENT1_RIS_RTOUT
+    enum: INT_EVENT1_RIS_RTOUT
   - name: RX
     description: Receive FIFO event.This interrupt is set if the selected Receive FIFO level has been reached.
     bit_offset: 3
     bit_size: 1
-    enum: SPI0_INT_EVENT1_RIS_RX
-fieldset/SPI0_INT_EVENT2_ICLR:
+    enum: INT_EVENT1_RIS_RX
+fieldset/INT_EVENT2_ICLR:
   description: Interrupt clear.
   fields:
   - name: TX
     description: Clear Transmit FIFO event.
     bit_offset: 4
     bit_size: 1
-    enum: SPI0_INT_EVENT2_ICLR_TX
-fieldset/SPI0_INT_EVENT2_IIDX:
+    enum: INT_EVENT2_ICLR_TX
+fieldset/INT_EVENT2_IIDX:
   description: Interrupt Index Register.
   fields:
   - name: STAT
     description: Interrupt index status.
     bit_offset: 0
     bit_size: 8
-    enum: SPI0_INT_EVENT2_IIDX_STAT
-fieldset/SPI0_INT_EVENT2_IMASK:
+    enum: INT_EVENT2_IIDX_STAT
+fieldset/INT_EVENT2_IMASK:
   description: Interrupt mask.
   fields:
   - name: TX
     description: Transmit FIFO event mask.
     bit_offset: 4
     bit_size: 1
-    enum: SPI0_INT_EVENT2_IMASK_TX
-fieldset/SPI0_INT_EVENT2_ISET:
+    enum: INT_EVENT2_IMASK_TX
+fieldset/INT_EVENT2_ISET:
   description: Interrupt set.
   fields:
   - name: TX
     description: Set Transmit FIFO event.
     bit_offset: 4
     bit_size: 1
-    enum: SPI0_INT_EVENT2_ISET_TX
-fieldset/SPI0_INT_EVENT2_MIS:
+    enum: INT_EVENT2_ISET_TX
+fieldset/INT_EVENT2_MIS:
   description: Masked interrupt status.
   fields:
   - name: TX
     description: Masked Transmit FIFO event.
     bit_offset: 4
     bit_size: 1
-    enum: SPI0_INT_EVENT2_MIS_TX
-fieldset/SPI0_INT_EVENT2_RIS:
+    enum: INT_EVENT2_MIS_TX
+fieldset/INT_EVENT2_RIS:
   description: Raw interrupt status.
   fields:
   - name: TX
     description: 'Transmit FIFO event: A read returns the current mask for transmit FIFO interrupt. On a write of 1, the mask for transmit FIFO interrupt is set which means the interrupt state will be reflected in MIS.TXMIS. A write of 0 clears the mask which means MIS.TXMIS will not reflect the interrupt.'
     bit_offset: 4
     bit_size: 1
-    enum: SPI0_INT_EVENT2_RIS_TX
-fieldset/SPI0_PDBGCTL:
+    enum: INT_EVENT2_RIS_TX
+fieldset/PDBGCTL:
   description: Peripheral Debug Control.
   fields:
   - name: FREE
@@ -805,15 +805,15 @@ fieldset/SPI0_PDBGCTL:
     bit_offset: 1
     bit_size: 1
     enum: SOFT
-fieldset/SPI0_PWREN:
+fieldset/PWREN:
   description: Power enable.
   fields:
   - name: ENABLE
     description: Enable the power.
     bit_offset: 0
     bit_size: 1
-    enum: SPI0_PWREN_ENABLE
-fieldset/SPI0_RSTCTL:
+    enum: PWREN_ENABLE
+fieldset/RSTCTL:
   description: Reset Control.
   fields:
   - name: RESETASSERT
@@ -826,14 +826,14 @@ fieldset/SPI0_RSTCTL:
     bit_offset: 1
     bit_size: 1
     enum: RESETSTKYCLR
-fieldset/SPI0_RXDATA:
+fieldset/RXDATA:
   description: RXDATA Register.
   fields:
   - name: DATA
     description: Received Data When PACKEN=1,two entries of the FIFO are returned as a 32-bit value. When PACKEN=0, 1 entry of FIFO is returned as 16-bit value. As data values are removed by the receive logic from the incoming data frame, they are placed into the entry in the receive FIFO, pointed to by the current FIFO write pointer. Received data less than 16 bits is automatically right justified in the receive buffer.
     bit_offset: 0
     bit_size: 16
-fieldset/SPI0_STAT:
+fieldset/STAT:
   description: Status Register.
   fields:
   - name: TFE
@@ -861,7 +861,7 @@ fieldset/SPI0_STAT:
     bit_offset: 4
     bit_size: 1
     enum: BUSY
-fieldset/SPI0_TXDATA:
+fieldset/TXDATA:
   description: TXDATA Register.
   fields:
   - name: DATA
@@ -1255,7 +1255,7 @@ enum/SPH:
   - name: SECOND
     description: Data is captured on the second clock edge transition.
     value: 1
-enum/SPI0_CTL1_ENABLE:
+enum/CTL1_ENABLE:
   bit_size: 1
   variants:
   - name: DISABLE
@@ -1264,7 +1264,7 @@ enum/SPI0_CTL1_ENABLE:
   - name: ENABLE
     description: Enable module function.
     value: 1
-enum/SPI0_INT_EVENT0_ICLR_DMA_DONE_RX:
+enum/INT_EVENT0_ICLR_DMA_DONE_RX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1273,7 +1273,7 @@ enum/SPI0_INT_EVENT0_ICLR_DMA_DONE_RX:
   - name: CLR
     description: Clear Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ICLR_DMA_DONE_TX:
+enum/INT_EVENT0_ICLR_DMA_DONE_TX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1282,7 +1282,7 @@ enum/SPI0_INT_EVENT0_ICLR_DMA_DONE_TX:
   - name: CLR
     description: Clear Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ICLR_IDLE:
+enum/INT_EVENT0_ICLR_IDLE:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1291,7 +1291,7 @@ enum/SPI0_INT_EVENT0_ICLR_IDLE:
   - name: CLR
     description: Clear Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ICLR_PER:
+enum/INT_EVENT0_ICLR_PER:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1300,7 +1300,7 @@ enum/SPI0_INT_EVENT0_ICLR_PER:
   - name: CLR
     description: Clear Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ICLR_RTOUT:
+enum/INT_EVENT0_ICLR_RTOUT:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1309,7 +1309,7 @@ enum/SPI0_INT_EVENT0_ICLR_RTOUT:
   - name: CLR
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_ICLR_RX:
+enum/INT_EVENT0_ICLR_RX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1318,7 +1318,7 @@ enum/SPI0_INT_EVENT0_ICLR_RX:
   - name: CLR
     description: Clear Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ICLR_RXFIFO_OVF:
+enum/INT_EVENT0_ICLR_RXFIFO_OVF:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1327,7 +1327,7 @@ enum/SPI0_INT_EVENT0_ICLR_RXFIFO_OVF:
   - name: CLR
     description: Clear Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ICLR_RXFULL:
+enum/INT_EVENT0_ICLR_RXFULL:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1336,7 +1336,7 @@ enum/SPI0_INT_EVENT0_ICLR_RXFULL:
   - name: CLR
     description: Clear interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ICLR_TX:
+enum/INT_EVENT0_ICLR_TX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1345,7 +1345,7 @@ enum/SPI0_INT_EVENT0_ICLR_TX:
   - name: CLR
     description: Clear Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ICLR_TXEMPTY:
+enum/INT_EVENT0_ICLR_TXEMPTY:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1354,7 +1354,7 @@ enum/SPI0_INT_EVENT0_ICLR_TXEMPTY:
   - name: CLR
     description: Clear Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ICLR_TXFIFO_UNF:
+enum/INT_EVENT0_ICLR_TXFIFO_UNF:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1363,7 +1363,7 @@ enum/SPI0_INT_EVENT0_ICLR_TXFIFO_UNF:
   - name: CLR
     description: Clear interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_IIDX_STAT:
+enum/INT_EVENT0_IIDX_STAT:
   bit_size: 8
   variants:
   - name: NO_INTR
@@ -1402,7 +1402,7 @@ enum/SPI0_INT_EVENT0_IIDX_STAT:
   - name: RXFULL_EVT
     description: RX FIFO Full Interrupt.
     value: 11
-enum/SPI0_INT_EVENT0_IMASK_DMA_DONE_RX:
+enum/INT_EVENT0_IMASK_DMA_DONE_RX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1411,7 +1411,7 @@ enum/SPI0_INT_EVENT0_IMASK_DMA_DONE_RX:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_IMASK_DMA_DONE_TX:
+enum/INT_EVENT0_IMASK_DMA_DONE_TX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1420,7 +1420,7 @@ enum/SPI0_INT_EVENT0_IMASK_DMA_DONE_TX:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_IMASK_IDLE:
+enum/INT_EVENT0_IMASK_IDLE:
   bit_size: 1
   variants:
   - name: CLR
@@ -1429,7 +1429,7 @@ enum/SPI0_INT_EVENT0_IMASK_IDLE:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_IMASK_PER:
+enum/INT_EVENT0_IMASK_PER:
   bit_size: 1
   variants:
   - name: CLR
@@ -1438,7 +1438,7 @@ enum/SPI0_INT_EVENT0_IMASK_PER:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_IMASK_RTOUT:
+enum/INT_EVENT0_IMASK_RTOUT:
   bit_size: 1
   variants:
   - name: CLR
@@ -1447,7 +1447,7 @@ enum/SPI0_INT_EVENT0_IMASK_RTOUT:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_IMASK_RX:
+enum/INT_EVENT0_IMASK_RX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1456,7 +1456,7 @@ enum/SPI0_INT_EVENT0_IMASK_RX:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_IMASK_RXFIFO_OVF:
+enum/INT_EVENT0_IMASK_RXFIFO_OVF:
   bit_size: 1
   variants:
   - name: CLR
@@ -1465,7 +1465,7 @@ enum/SPI0_INT_EVENT0_IMASK_RXFIFO_OVF:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_IMASK_RXFULL:
+enum/INT_EVENT0_IMASK_RXFULL:
   bit_size: 1
   variants:
   - name: CLR
@@ -1474,7 +1474,7 @@ enum/SPI0_INT_EVENT0_IMASK_RXFULL:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_IMASK_TX:
+enum/INT_EVENT0_IMASK_TX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1483,7 +1483,7 @@ enum/SPI0_INT_EVENT0_IMASK_TX:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_IMASK_TXEMPTY:
+enum/INT_EVENT0_IMASK_TXEMPTY:
   bit_size: 1
   variants:
   - name: CLR
@@ -1492,7 +1492,7 @@ enum/SPI0_INT_EVENT0_IMASK_TXEMPTY:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_IMASK_TXFIFO_UNF:
+enum/INT_EVENT0_IMASK_TXFIFO_UNF:
   bit_size: 1
   variants:
   - name: CLR
@@ -1501,7 +1501,7 @@ enum/SPI0_INT_EVENT0_IMASK_TXFIFO_UNF:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_ISET_DMA_DONE_RX:
+enum/INT_EVENT0_ISET_DMA_DONE_RX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1510,7 +1510,7 @@ enum/SPI0_INT_EVENT0_ISET_DMA_DONE_RX:
   - name: SET
     description: Set Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ISET_DMA_DONE_TX:
+enum/INT_EVENT0_ISET_DMA_DONE_TX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1519,7 +1519,7 @@ enum/SPI0_INT_EVENT0_ISET_DMA_DONE_TX:
   - name: SET
     description: Set Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ISET_IDLE:
+enum/INT_EVENT0_ISET_IDLE:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1528,7 +1528,7 @@ enum/SPI0_INT_EVENT0_ISET_IDLE:
   - name: SET
     description: Set Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ISET_PER:
+enum/INT_EVENT0_ISET_PER:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1537,7 +1537,7 @@ enum/SPI0_INT_EVENT0_ISET_PER:
   - name: SET
     description: Set Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ISET_RTOUT:
+enum/INT_EVENT0_ISET_RTOUT:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1546,7 +1546,7 @@ enum/SPI0_INT_EVENT0_ISET_RTOUT:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_ISET_RX:
+enum/INT_EVENT0_ISET_RX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1555,7 +1555,7 @@ enum/SPI0_INT_EVENT0_ISET_RX:
   - name: SET
     description: Set Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ISET_RXFIFO_OVF:
+enum/INT_EVENT0_ISET_RXFIFO_OVF:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1564,7 +1564,7 @@ enum/SPI0_INT_EVENT0_ISET_RXFIFO_OVF:
   - name: SET
     description: Set Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ISET_RXFULL:
+enum/INT_EVENT0_ISET_RXFULL:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1573,7 +1573,7 @@ enum/SPI0_INT_EVENT0_ISET_RXFULL:
   - name: SET
     description: Set Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ISET_TX:
+enum/INT_EVENT0_ISET_TX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1582,7 +1582,7 @@ enum/SPI0_INT_EVENT0_ISET_TX:
   - name: SET
     description: Set Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ISET_TXEMPTY:
+enum/INT_EVENT0_ISET_TXEMPTY:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1591,7 +1591,7 @@ enum/SPI0_INT_EVENT0_ISET_TXEMPTY:
   - name: SET
     description: Set Interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_ISET_TXFIFO_UNF:
+enum/INT_EVENT0_ISET_TXFIFO_UNF:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1600,7 +1600,7 @@ enum/SPI0_INT_EVENT0_ISET_TXFIFO_UNF:
   - name: SET
     description: Set interrupt.
     value: 1
-enum/SPI0_INT_EVENT0_MIS_DMA_DONE_RX:
+enum/INT_EVENT0_MIS_DMA_DONE_RX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1609,7 +1609,7 @@ enum/SPI0_INT_EVENT0_MIS_DMA_DONE_RX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_MIS_DMA_DONE_TX:
+enum/INT_EVENT0_MIS_DMA_DONE_TX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1618,7 +1618,7 @@ enum/SPI0_INT_EVENT0_MIS_DMA_DONE_TX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_MIS_IDLE:
+enum/INT_EVENT0_MIS_IDLE:
   bit_size: 1
   variants:
   - name: CLR
@@ -1627,7 +1627,7 @@ enum/SPI0_INT_EVENT0_MIS_IDLE:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_MIS_PER:
+enum/INT_EVENT0_MIS_PER:
   bit_size: 1
   variants:
   - name: CLR
@@ -1636,7 +1636,7 @@ enum/SPI0_INT_EVENT0_MIS_PER:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_MIS_RTOUT:
+enum/INT_EVENT0_MIS_RTOUT:
   bit_size: 1
   variants:
   - name: CLR
@@ -1645,7 +1645,7 @@ enum/SPI0_INT_EVENT0_MIS_RTOUT:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT0_MIS_RX:
+enum/INT_EVENT0_MIS_RX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1654,7 +1654,7 @@ enum/SPI0_INT_EVENT0_MIS_RX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_MIS_RXFIFO_OVF:
+enum/INT_EVENT0_MIS_RXFIFO_OVF:
   bit_size: 1
   variants:
   - name: CLR
@@ -1663,7 +1663,7 @@ enum/SPI0_INT_EVENT0_MIS_RXFIFO_OVF:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_MIS_RXFULL:
+enum/INT_EVENT0_MIS_RXFULL:
   bit_size: 1
   variants:
   - name: CLR
@@ -1672,7 +1672,7 @@ enum/SPI0_INT_EVENT0_MIS_RXFULL:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_MIS_TX:
+enum/INT_EVENT0_MIS_TX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1681,7 +1681,7 @@ enum/SPI0_INT_EVENT0_MIS_TX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_MIS_TXEMPTY:
+enum/INT_EVENT0_MIS_TXEMPTY:
   bit_size: 1
   variants:
   - name: CLR
@@ -1690,7 +1690,7 @@ enum/SPI0_INT_EVENT0_MIS_TXEMPTY:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_MIS_TXFIFO_UNF:
+enum/INT_EVENT0_MIS_TXFIFO_UNF:
   bit_size: 1
   variants:
   - name: CLR
@@ -1699,7 +1699,7 @@ enum/SPI0_INT_EVENT0_MIS_TXFIFO_UNF:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_RIS_DMA_DONE_RX:
+enum/INT_EVENT0_RIS_DMA_DONE_RX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1708,7 +1708,7 @@ enum/SPI0_INT_EVENT0_RIS_DMA_DONE_RX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_RIS_DMA_DONE_TX:
+enum/INT_EVENT0_RIS_DMA_DONE_TX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1717,7 +1717,7 @@ enum/SPI0_INT_EVENT0_RIS_DMA_DONE_TX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_RIS_IDLE:
+enum/INT_EVENT0_RIS_IDLE:
   bit_size: 1
   variants:
   - name: CLR
@@ -1726,7 +1726,7 @@ enum/SPI0_INT_EVENT0_RIS_IDLE:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_RIS_PER:
+enum/INT_EVENT0_RIS_PER:
   bit_size: 1
   variants:
   - name: CLR
@@ -1735,7 +1735,7 @@ enum/SPI0_INT_EVENT0_RIS_PER:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_RIS_RTOUT:
+enum/INT_EVENT0_RIS_RTOUT:
   bit_size: 1
   variants:
   - name: CLR
@@ -1744,7 +1744,7 @@ enum/SPI0_INT_EVENT0_RIS_RTOUT:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_RIS_RX:
+enum/INT_EVENT0_RIS_RX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1753,7 +1753,7 @@ enum/SPI0_INT_EVENT0_RIS_RX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_RIS_RXFIFO_OVF:
+enum/INT_EVENT0_RIS_RXFIFO_OVF:
   bit_size: 1
   variants:
   - name: CLR
@@ -1762,7 +1762,7 @@ enum/SPI0_INT_EVENT0_RIS_RXFIFO_OVF:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_RIS_RXFULL:
+enum/INT_EVENT0_RIS_RXFULL:
   bit_size: 1
   variants:
   - name: CLR
@@ -1771,7 +1771,7 @@ enum/SPI0_INT_EVENT0_RIS_RXFULL:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_RIS_TX:
+enum/INT_EVENT0_RIS_TX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1780,7 +1780,7 @@ enum/SPI0_INT_EVENT0_RIS_TX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_RIS_TXEMPTY:
+enum/INT_EVENT0_RIS_TXEMPTY:
   bit_size: 1
   variants:
   - name: CLR
@@ -1789,7 +1789,7 @@ enum/SPI0_INT_EVENT0_RIS_TXEMPTY:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT0_RIS_TXFIFO_UNF:
+enum/INT_EVENT0_RIS_TXFIFO_UNF:
   bit_size: 1
   variants:
   - name: CLR
@@ -1798,7 +1798,7 @@ enum/SPI0_INT_EVENT0_RIS_TXFIFO_UNF:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT1_ICLR_RTOUT:
+enum/INT_EVENT1_ICLR_RTOUT:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1807,7 +1807,7 @@ enum/SPI0_INT_EVENT1_ICLR_RTOUT:
   - name: CLR
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT1_ICLR_RX:
+enum/INT_EVENT1_ICLR_RX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1816,7 +1816,7 @@ enum/SPI0_INT_EVENT1_ICLR_RX:
   - name: CLR
     description: Clear Interrupt.
     value: 1
-enum/SPI0_INT_EVENT1_IIDX_STAT:
+enum/INT_EVENT1_IIDX_STAT:
   bit_size: 8
   variants:
   - name: NO_INTR
@@ -1828,7 +1828,7 @@ enum/SPI0_INT_EVENT1_IIDX_STAT:
   - name: RX_EVT
     description: Receive Event/interrupt pending.
     value: 4
-enum/SPI0_INT_EVENT1_IMASK_RTOUT:
+enum/INT_EVENT1_IMASK_RTOUT:
   bit_size: 1
   variants:
   - name: CLR
@@ -1837,7 +1837,7 @@ enum/SPI0_INT_EVENT1_IMASK_RTOUT:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT1_IMASK_RX:
+enum/INT_EVENT1_IMASK_RX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1846,7 +1846,7 @@ enum/SPI0_INT_EVENT1_IMASK_RX:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT1_ISET_RTOUT:
+enum/INT_EVENT1_ISET_RTOUT:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1855,7 +1855,7 @@ enum/SPI0_INT_EVENT1_ISET_RTOUT:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT1_ISET_RX:
+enum/INT_EVENT1_ISET_RX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1864,7 +1864,7 @@ enum/SPI0_INT_EVENT1_ISET_RX:
   - name: SET
     description: Set Interrupt.
     value: 1
-enum/SPI0_INT_EVENT1_MIS_RTOUT:
+enum/INT_EVENT1_MIS_RTOUT:
   bit_size: 1
   variants:
   - name: CLR
@@ -1873,7 +1873,7 @@ enum/SPI0_INT_EVENT1_MIS_RTOUT:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT1_MIS_RX:
+enum/INT_EVENT1_MIS_RX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1882,7 +1882,7 @@ enum/SPI0_INT_EVENT1_MIS_RX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT1_RIS_RTOUT:
+enum/INT_EVENT1_RIS_RTOUT:
   bit_size: 1
   variants:
   - name: CLR
@@ -1891,7 +1891,7 @@ enum/SPI0_INT_EVENT1_RIS_RTOUT:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT1_RIS_RX:
+enum/INT_EVENT1_RIS_RX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1900,7 +1900,7 @@ enum/SPI0_INT_EVENT1_RIS_RX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT2_ICLR_TX:
+enum/INT_EVENT2_ICLR_TX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1909,7 +1909,7 @@ enum/SPI0_INT_EVENT2_ICLR_TX:
   - name: CLR
     description: Clear Interrupt.
     value: 1
-enum/SPI0_INT_EVENT2_IIDX_STAT:
+enum/INT_EVENT2_IIDX_STAT:
   bit_size: 8
   variants:
   - name: NO_INTR
@@ -1918,7 +1918,7 @@ enum/SPI0_INT_EVENT2_IIDX_STAT:
   - name: TX_EVT
     description: Transmit Event/interrupt pending.
     value: 5
-enum/SPI0_INT_EVENT2_IMASK_TX:
+enum/INT_EVENT2_IMASK_TX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1927,7 +1927,7 @@ enum/SPI0_INT_EVENT2_IMASK_TX:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/SPI0_INT_EVENT2_ISET_TX:
+enum/INT_EVENT2_ISET_TX:
   bit_size: 1
   variants:
   - name: NO_EFFECT
@@ -1936,7 +1936,7 @@ enum/SPI0_INT_EVENT2_ISET_TX:
   - name: SET
     description: Set Interrupt.
     value: 1
-enum/SPI0_INT_EVENT2_MIS_TX:
+enum/INT_EVENT2_MIS_TX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1945,7 +1945,7 @@ enum/SPI0_INT_EVENT2_MIS_TX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_INT_EVENT2_RIS_TX:
+enum/INT_EVENT2_RIS_TX:
   bit_size: 1
   variants:
   - name: CLR
@@ -1954,7 +1954,7 @@ enum/SPI0_INT_EVENT2_RIS_TX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/SPI0_PWREN_ENABLE:
+enum/PWREN_ENABLE:
   bit_size: 1
   variants:
   - name: DISABLE
