@@ -193,7 +193,7 @@ fieldset/CLKDIV:
     description: 'Selects divide ratio of module clock Division factor 0 : DIV_BY_1 1 : DIV_BY_2 .... 63: DIV_BY_64.'
     bit_offset: 0
     bit_size: 3
- fieldset/CLKSEL:
+fieldset/CLKSEL:
   description: Clock Select for Ultra Low Power peripherals.
   fields:
   - name: LFCLK_SEL
