@@ -776,6 +776,10 @@ fieldset/PWREN:
     description: Enable the power.
     bit_offset: 0
     bit_size: 1
+  - name: KEY
+    description: Write 0x26 to this.
+    bit_offset: 24
+    bit_size: 8
 fieldset/RSTCTL:
   description: Reset Control.
   fields:
