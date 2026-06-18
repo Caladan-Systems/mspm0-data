@@ -161,6 +161,11 @@ pub enum PeripheralType {
 
     Unicomm,
 
+    UnicommUart,
+    UnicommI2CC,
+    UnicommI2CT,
+    UnicommSpi,
+
     Usbfs,
 
     Vref,
@@ -205,6 +210,10 @@ impl fmt::Display for PeripheralType {
             PeripheralType::Trng => "trng",
             PeripheralType::Uart => "uart",
             PeripheralType::Unicomm => "unicomm",
+            PeripheralType::UnicommSpi => "unicomm_spi",
+            PeripheralType::UnicommUart => "unicomm_uart",
+            PeripheralType::UnicommI2CC => "unicomm_i2cc",
+            PeripheralType::UnicommI2CT => "unicomm_i2ct",
             PeripheralType::Usbfs => "usbfs",
             PeripheralType::Vref => "vref",
             PeripheralType::Wuc => "wuc",

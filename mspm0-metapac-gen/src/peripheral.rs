@@ -23,7 +23,12 @@ const GENERATE_PERIPHERALS: &[PeripheralType] = &[
     PeripheralType::Trng,
     PeripheralType::Uart,
     PeripheralType::Wwdt,
-    PeripheralType::Spi
+    PeripheralType::Spi,
+    PeripheralType::Unicomm,
+    PeripheralType::UnicommUart,
+    PeripheralType::UnicommSpi,
+    PeripheralType::UnicommI2CC,
+    PeripheralType::UnicommI2CT
 ];
 
 pub fn generate(chip: &Chip, all_versions: &mut BTreeMap<String, BTreeSet<String>>) -> TokenStream {
@@ -45,10 +50,27 @@ fn generate_peripheral_imports(
     peripheral_types.sort_by(|(a, _), (b, _)| a.cmp(b));
     peripheral_types.dedup_by(|(_, a), (_, b)| a.ty == b.ty);
 
-    peripheral_types
+    // manually patch in unicomm_uart, unicomm_spi, and unicomm_i2cx.
+    let all_peripherals : TokenStream = peripheral_types
         .iter()
         .map(|(name, peripheral)| generate_import(chip, name, peripheral, all_versions))
-        .collect()
+        .collect();
+    // TODO: autogenerate this
+    quote! {
+        #all_peripherals
+
+        #[path="../../peripherals/unicomm_uart_v1.rs"]
+        pub mod unicomm_uart;
+
+        #[path="../../peripherals/unicomm_spi_v1.rs"]
+        pub mod unicomm_spi;
+
+        #[path="../../peripherals/unicomm_i2cc_v1.rs"]
+        pub mod unicomm_i2cc;
+
+        #[path="../../peripherals/unicomm_i2ct_v1.rs"]
+        pub mod unicomm_i2ct;
+    }
 }
 
 fn generate_import(
