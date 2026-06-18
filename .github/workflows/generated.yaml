@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: Caladan-Systems/mspm0-data-generated
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
         ref: master
         path: mspm0-data-generated
         fetch-depth: 0
