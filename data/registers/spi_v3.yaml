@@ -820,12 +820,14 @@ fieldset/RSTCTL:
     description: Assert reset to the peripheral.
     bit_offset: 0
     bit_size: 1
-    enum: RESETASSERT
   - name: RESETSTKYCLR
     description: Clear the RESETSTKY bit in the STAT register.
     bit_offset: 1
     bit_size: 1
-    enum: RESETSTKYCLR
+  - name: KEY
+    description: Write 0xB1 to this.
+    bit_offset: 24
+    bit_size: 8
 fieldset/RXDATA:
   description: RXDATA Register.
   fields:
