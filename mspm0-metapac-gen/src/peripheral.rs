@@ -59,17 +59,17 @@ fn generate_peripheral_imports(
     quote! {
         #all_peripherals
 
-        #[path="../../peripherals/unicomm_uart_v1.rs"]
-        pub mod unicomm_uart;
+        #[path="../../peripherals/uc_uart_v1.rs"]
+        pub mod uc_uart;
 
-        #[path="../../peripherals/unicomm_spi_v1.rs"]
-        pub mod unicomm_spi;
+        #[path="../../peripherals/uc_spi_v1.rs"]
+        pub mod uc_spi;
 
-        #[path="../../peripherals/unicomm_i2cc_v1.rs"]
-        pub mod unicomm_i2cc;
+        #[path="../../peripherals/uc_i2cc_v1.rs"]
+        pub mod uc_i2cc;
 
-        #[path="../../peripherals/unicomm_i2ct_v1.rs"]
-        pub mod unicomm_i2ct;
+        #[path="../../peripherals/uc_i2ct_v1.rs"]
+        pub mod uc_i2ct;
     }
 }
 
