@@ -1,76 +1,3 @@
-block/SPI:
-  description: PERIPHERALREGION.
-  items:
-  - name: GPRCM
-    array:
-      len: 1
-      stride: 24
-    byte_offset: 2048
-    block: GPRCM
-  - name: CLKDIV
-    description: Clock Divider.
-    byte_offset: 4096
-    fieldset: CLKDIV
-  - name: CLKSEL
-    description: Clock Select for Ultra Low Power peripherals.
-    byte_offset: 4100
-    fieldset: CLKSEL
-  - name: PDBGCTL
-    description: Peripheral Debug Control.
-    byte_offset: 4120
-    fieldset: PDBGCTL
-  - name: INT_EVENT0
-    array:
-      len: 1
-      stride: 44
-    byte_offset: 4128
-    block: INT_EVENT0
-  - name: INT_EVENT1
-    array:
-      len: 1
-      stride: 44
-    byte_offset: 4176
-    block: INT_EVENT1
-  - name: INT_EVENT2
-    array:
-      len: 1
-      stride: 44
-    byte_offset: 4224
-    block: INT_EVENT2
-  - name: EVT_MODE
-    description: Event Mode.
-    byte_offset: 4320
-    fieldset: EVT_MODE
-  - name: CTL0
-    description: SPI control register 0.
-    byte_offset: 4352
-    fieldset: CTL0
-  - name: CTL1
-    description: SPI control register 1.
-    byte_offset: 4356
-    fieldset: CTL1
-  - name: CLKCTL
-    description: Clock prescaler and divider register.
-    byte_offset: 4360
-    fieldset: CLKCTL
-  - name: IFLS
-    description: UART Interrupt FIFO Level Select Register.
-    byte_offset: 4364
-    fieldset: IFLS
-  - name: STAT
-    description: Status Register.
-    byte_offset: 4368
-    access: Read
-    fieldset: STAT
-  - name: RXDATA
-    description: RXDATA Register.
-    byte_offset: 4400
-    access: Read
-    fieldset: RXDATA
-  - name: TXDATA
-    description: TXDATA Register.
-    byte_offset: 4416
-    fieldset: TXDATA
 block/GPRCM:
   items:
   - name: PWREN
@@ -184,6 +111,79 @@ block/INT_EVENT2:
     byte_offset: 40
     access: Write
     fieldset: INT_EVENT2_ICLR
+block/SPI:
+  description: PERIPHERALREGION.
+  items:
+  - name: GPRCM
+    array:
+      len: 1
+      stride: 24
+    byte_offset: 2048
+    block: GPRCM
+  - name: CLKDIV
+    description: Clock Divider.
+    byte_offset: 4096
+    fieldset: CLKDIV
+  - name: CLKSEL
+    description: Clock Select for Ultra Low Power peripherals.
+    byte_offset: 4100
+    fieldset: CLKSEL
+  - name: PDBGCTL
+    description: Peripheral Debug Control.
+    byte_offset: 4120
+    fieldset: PDBGCTL
+  - name: INT_EVENT0
+    array:
+      len: 1
+      stride: 44
+    byte_offset: 4128
+    block: INT_EVENT0
+  - name: INT_EVENT1
+    array:
+      len: 1
+      stride: 44
+    byte_offset: 4176
+    block: INT_EVENT1
+  - name: INT_EVENT2
+    array:
+      len: 1
+      stride: 44
+    byte_offset: 4224
+    block: INT_EVENT2
+  - name: EVT_MODE
+    description: Event Mode.
+    byte_offset: 4320
+    fieldset: EVT_MODE
+  - name: CTL0
+    description: SPI control register 0.
+    byte_offset: 4352
+    fieldset: CTL0
+  - name: CTL1
+    description: SPI control register 1.
+    byte_offset: 4356
+    fieldset: CTL1
+  - name: CLKCTL
+    description: Clock prescaler and divider register.
+    byte_offset: 4360
+    fieldset: CLKCTL
+  - name: IFLS
+    description: UART Interrupt FIFO Level Select Register.
+    byte_offset: 4364
+    fieldset: IFLS
+  - name: STAT
+    description: Status Register.
+    byte_offset: 4368
+    access: Read
+    fieldset: STAT
+  - name: RXDATA
+    description: RXDATA Register.
+    byte_offset: 4400
+    access: Read
+    fieldset: RXDATA
+  - name: TXDATA
+    description: TXDATA Register.
+    byte_offset: 4416
+    fieldset: TXDATA
 fieldset/CLKCFG:
   description: Peripheral Clock Configuration Register.
   fields:
@@ -191,7 +191,6 @@ fieldset/CLKCFG:
     description: Async Clock Request is blocked from starting SYSOSC or forcing bus clock to 32MHz.
     bit_offset: 8
     bit_size: 1
-    enum: BLOCKASYNC
 fieldset/CLKCTL:
   description: Clock prescaler and divider register.
   fields:
@@ -218,17 +217,14 @@ fieldset/CLKSEL:
     description: Selects LFCLK as clock source if enabled.
     bit_offset: 1
     bit_size: 1
-    enum: LFCLK_SEL
   - name: MFCLK_SEL
     description: Selects MFCLK as clock source if enabled.
     bit_offset: 2
     bit_size: 1
-    enum: MFCLK_SEL
   - name: SYSCLK_SEL
     description: Selects SYSCLK as clock source if enabled.
     bit_offset: 3
     bit_size: 1
-    enum: SYSCLK_SEL
 fieldset/CTL0:
   description: SPI control register 0.
   fields:
@@ -246,7 +242,6 @@ fieldset/CTL0:
     description: Packing Enable. When 1, packing feature is enabled inside the IP When 0, packing feature is disabled inside the IP.
     bit_offset: 7
     bit_size: 1
-    enum: PACKEN
   - name: SPO
     description: CLKOUT polarity (Motorola SPI frame format only).
     bit_offset: 8
@@ -266,7 +261,6 @@ fieldset/CTL0:
     description: Clear shift register counter on CS inactive This bit is relevant only in the peripheral, CTL1.MS=0.
     bit_offset: 14
     bit_size: 1
-    enum: CSCLR
 fieldset/CTL1:
   description: SPI control register 1.
   fields:
@@ -274,52 +268,42 @@ fieldset/CTL1:
     description: SPI enable.
     bit_offset: 0
     bit_size: 1
-    enum: CTL1_ENABLE
   - name: LBM
     description: Loop back mode.
     bit_offset: 1
     bit_size: 1
-    enum: LBM
   - name: MS
     description: Controller or peripheral mode select. This bit can be modified only when SPI is disabled, CTL1.ENABLE=0.
     bit_offset: 2
     bit_size: 1
-    enum: MS
   - name: SOD
     description: 'Peripheral-mode: Data output disabled This bit is relevant only in the peripheral mode, CTL1.MS=1. In multiple-peripheral systems, it is possible for an SPI controller to broadcast a message to all peripherals in the system while ensuring that only one peripheral drives data onto its serial output line. In such systems the MISO lines from multiple peripherals could be tied together. To operate in such systems, this bitfield can be set if the SPI peripheral is not supposed to drive the MISO line:.'
     bit_offset: 3
     bit_size: 1
-    enum: SOD
   - name: MSB
     description: MSB first select. Controls the direction of the receive and transmit shift register.
     bit_offset: 4
     bit_size: 1
-    enum: MSB
   - name: PREN
     description: Parity receive enable If enabled, parity reception check will be done for both controller and peripheral modes In case of a parity miss-match the parity error flag RIS.PER will be set.
     bit_offset: 5
     bit_size: 1
-    enum: PREN
   - name: PES
     description: Even Parity Select.
     bit_offset: 6
     bit_size: 1
-    enum: PES
   - name: PBS
     description: Parity Bit Select.
     bit_offset: 7
     bit_size: 1
-    enum: PBS
   - name: PTEN
     description: Parity transmit enable If enabled, parity transmission will be done for both controller and peripheral modes.
     bit_offset: 8
     bit_size: 1
-    enum: PTEN
   - name: CDENABLE
     description: Command/Data Mode enable.
     bit_offset: 11
     bit_size: 1
-    enum: CDENABLE
   - name: CDMODE
     description: 'Command/Data Mode Value When CTL1.CDENABLE is 1, CS3 line is used as C/D signal to distinguish between Command (C/D low) and Data (C/D high) information. When a value is written into the CTL1.CDMODE bits, the C/D (CS3) line will go low for the given numbers of byte which are sent by the SPI, starting with the next value to be transmitted after which, C/D line will go high automatically 0: Manual mode with C/D signal as High 1-14: C/D is low while this number of bytes are being sent after which, this field sets to 0 and C/D goes high. Reading this field at any time returns the remaining number of command bytes. 15: Manual mode with C/D signal as Low.'
     bit_offset: 12
@@ -380,57 +364,46 @@ fieldset/INT_EVENT0_ICLR:
     description: Clear RXFIFO overflow event.
     bit_offset: 0
     bit_size: 1
-    enum: INT_EVENT0_ICLR_RXFIFO_OVF
   - name: PER
     description: Clear Parity error event.
     bit_offset: 1
     bit_size: 1
-    enum: INT_EVENT0_ICLR_PER
   - name: RTOUT
     description: Clear SPI Receive Time-Out Event.
     bit_offset: 2
     bit_size: 1
-    enum: INT_EVENT0_ICLR_RTOUT
   - name: RX
     description: Clear Receive FIFO event.
     bit_offset: 3
     bit_size: 1
-    enum: INT_EVENT0_ICLR_RX
   - name: TX
     description: Clear Transmit FIFO event.
     bit_offset: 4
     bit_size: 1
-    enum: INT_EVENT0_ICLR_TX
   - name: TXEMPTY
     description: Clear Transmit FIFO Empty event.
     bit_offset: 5
     bit_size: 1
-    enum: INT_EVENT0_ICLR_TXEMPTY
   - name: IDLE
     description: Clear SPI IDLE mode event.
     bit_offset: 6
     bit_size: 1
-    enum: INT_EVENT0_ICLR_IDLE
   - name: DMA_DONE_RX
     description: Clear DMA Done 1 event for RX.
     bit_offset: 7
     bit_size: 1
-    enum: INT_EVENT0_ICLR_DMA_DONE_RX
   - name: DMA_DONE_TX
     description: Clear DMA Done 1 event for TX.
     bit_offset: 8
     bit_size: 1
-    enum: INT_EVENT0_ICLR_DMA_DONE_TX
   - name: TXFIFO_UNF
     description: Clear TXFIFO underflow event.
     bit_offset: 9
     bit_size: 1
-    enum: INT_EVENT0_ICLR_TXFIFO_UNF
   - name: RXFULL
     description: Clear RX FIFO underflow event.
     bit_offset: 10
     bit_size: 1
-    enum: INT_EVENT0_ICLR_RXFULL
 fieldset/INT_EVENT0_IIDX:
   description: Interrupt Index Register.
   fields:
@@ -504,57 +477,46 @@ fieldset/INT_EVENT0_ISET:
     description: Set RXFIFO overflow event.
     bit_offset: 0
     bit_size: 1
-    enum: INT_EVENT0_ISET_RXFIFO_OVF
   - name: PER
     description: Set Parity error event.
     bit_offset: 1
     bit_size: 1
-    enum: INT_EVENT0_ISET_PER
   - name: RTOUT
     description: Set SPI Receive Time-Out Event.
     bit_offset: 2
     bit_size: 1
-    enum: INT_EVENT0_ISET_RTOUT
   - name: RX
     description: Set Receive FIFO event.
     bit_offset: 3
     bit_size: 1
-    enum: INT_EVENT0_ISET_RX
   - name: TX
     description: Set Transmit FIFO event.
     bit_offset: 4
     bit_size: 1
-    enum: INT_EVENT0_ISET_TX
   - name: TXEMPTY
     description: Set Transmit FIFO Empty event.
     bit_offset: 5
     bit_size: 1
-    enum: INT_EVENT0_ISET_TXEMPTY
   - name: IDLE
     description: Set SPI IDLE mode event.
     bit_offset: 6
     bit_size: 1
-    enum: INT_EVENT0_ISET_IDLE
   - name: DMA_DONE_RX
     description: Set DMA Done 1 event for RX.
     bit_offset: 7
     bit_size: 1
-    enum: INT_EVENT0_ISET_DMA_DONE_RX
   - name: DMA_DONE_TX
     description: Set DMA Done 1 event for TX.
     bit_offset: 8
     bit_size: 1
-    enum: INT_EVENT0_ISET_DMA_DONE_TX
   - name: TXFIFO_UNF
     description: Set TX FIFO Underflow Event.
     bit_offset: 9
     bit_size: 1
-    enum: INT_EVENT0_ISET_TXFIFO_UNF
   - name: RXFULL
     description: Set RX FIFO Full Event.
     bit_offset: 10
     bit_size: 1
-    enum: INT_EVENT0_ISET_RXFULL
 fieldset/INT_EVENT0_MIS:
   description: Masked interrupt status.
   fields:
@@ -678,12 +640,10 @@ fieldset/INT_EVENT1_ICLR:
     description: Clear SPI Receive Time-Out event.
     bit_offset: 2
     bit_size: 1
-    enum: INT_EVENT1_ICLR_RTOUT
   - name: RX
     description: Clear Receive FIFO event.
     bit_offset: 3
     bit_size: 1
-    enum: INT_EVENT1_ICLR_RX
 fieldset/INT_EVENT1_IIDX:
   description: Interrupt Index Register.
   fields:
@@ -712,12 +672,10 @@ fieldset/INT_EVENT1_ISET:
     description: Set SPI Receive Time-Out event.
     bit_offset: 2
     bit_size: 1
-    enum: INT_EVENT1_ISET_RTOUT
   - name: RX
     description: Set Receive FIFO event.
     bit_offset: 3
     bit_size: 1
-    enum: INT_EVENT1_ISET_RX
 fieldset/INT_EVENT1_MIS:
   description: Masked interrupt status.
   fields:
@@ -751,7 +709,6 @@ fieldset/INT_EVENT2_ICLR:
     description: Clear Transmit FIFO event.
     bit_offset: 4
     bit_size: 1
-    enum: INT_EVENT2_ICLR_TX
 fieldset/INT_EVENT2_IIDX:
   description: Interrupt Index Register.
   fields:
@@ -775,7 +732,6 @@ fieldset/INT_EVENT2_ISET:
     description: Set Transmit FIFO event.
     bit_offset: 4
     bit_size: 1
-    enum: INT_EVENT2_ISET_TX
 fieldset/INT_EVENT2_MIS:
   description: Masked interrupt status.
   fields:
@@ -812,7 +768,6 @@ fieldset/PWREN:
     description: Enable the power.
     bit_offset: 0
     bit_size: 1
-    enum: PWREN_ENABLE
 fieldset/RSTCTL:
   description: Reset Control.
   fields:
@@ -842,7 +797,6 @@ fieldset/STAT:
     description: Transmit FIFO empty.
     bit_offset: 0
     bit_size: 1
-    enum: TFE
   - name: TNF
     description: Transmit FIFO not full.
     bit_offset: 1
@@ -852,7 +806,6 @@ fieldset/STAT:
     description: Receive FIFO empty.
     bit_offset: 2
     bit_size: 1
-    enum: RFE
   - name: RNF
     description: Receive FIFO not full.
     bit_offset: 3
@@ -870,15 +823,6 @@ fieldset/TXDATA:
     description: Transmit Data WWhen read, last written value will be returned. If the last write to this field was a 32-bit write (with PACKEN=1), 32-bits will be returned and if the last write was a 16-bit write (PACKEN=0), those 16-bits will be returned. When written, one or two FIFO entries will be written depending on PACKEN value. Data values are removed from the transmit FIFO one value at a time by the transmit logic. It is loaded into the transmit serial shifter, then serially shifted out onto the TXD output pin at the programmed bit rate. When a data size of less than 16 bits is selected, the user must right-justify data written to the transmit FIFO. The transmit logic ignores the unused bits.
     bit_offset: 0
     bit_size: 16
-enum/BLOCKASYNC:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Not block async clock request.
-    value: 0
-  - name: ENABLE
-    description: Block async clock request.
-    value: 1
 enum/BUSY:
   bit_size: 1
   variants:
@@ -887,15 +831,6 @@ enum/BUSY:
     value: 0
   - name: ACTIVE
     description: SPI is currently transmitting and/or receiving data, or transmit FIFO is not empty.
-    value: 1
-enum/CDENABLE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: CS3 is used for Chip Select.
-    value: 0
-  - name: ENABLE
-    description: CS3 is used as CD signal.
     value: 1
 enum/CDMODE:
   bit_size: 4
@@ -906,15 +841,6 @@ enum/CDMODE:
   - name: COMMAND
     description: 'Manual mode: Command.'
     value: 15
-enum/CSCLR:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable automatic clear of shift register when CS goes to disable.
-    value: 0
-  - name: ENABLE
-    description: Enable automatic clear of shift register when CS goes to disable.
-    value: 1
 enum/CSSEL:
   bit_size: 2
   variants:
@@ -1035,336 +961,6 @@ enum/INT2_CFG:
   - name: HARDWARE
     description: The interrupt or event line is in hardware mode. The hardware (another module) clears automatically the associated RIS flag.
     value: 2
-enum/LBM:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable loopback mode.
-    value: 0
-  - name: ENABLE
-    description: Enable loopback mode.
-    value: 1
-enum/LFCLK_SEL:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Does not select this clock as a source.
-    value: 0
-  - name: ENABLE
-    description: Select this clock as a source.
-    value: 1
-enum/MFCLK_SEL:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Does not select this clock as a source.
-    value: 0
-  - name: ENABLE
-    description: Select this clock as a source.
-    value: 1
-enum/MS:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Select Peripheral mode.
-    value: 0
-  - name: ENABLE
-    description: Select Controller Mode.
-    value: 1
-enum/MSB:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: LSB first.
-    value: 0
-  - name: ENABLE
-    description: MSB first.
-    value: 1
-enum/PACKEN:
-  bit_size: 1
-  variants:
-  - name: DISABLED
-    description: Packing feature disabled.
-    value: 0
-  - name: ENABLED
-    description: Packing feature enabled.
-    value: 1
-enum/PBS:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Bit 0 is used for Parity.
-    value: 0
-  - name: ENABLE
-    description: Bit 1 is used for Parity, Bit 0 is ignored.
-    value: 1
-enum/PES:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Odd Parity mode.
-    value: 0
-  - name: ENABLE
-    description: Even Parity mode.
-    value: 1
-enum/PREN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable Parity receive function.
-    value: 0
-  - name: ENABLE
-    description: Enable Parity receive function.
-    value: 1
-enum/PTEN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Parity transmission is disabled.
-    value: 0
-  - name: ENABLE
-    description: Parity transmission is enabled.
-    value: 1
-enum/RATIO:
-  bit_size: 3
-  variants:
-  - name: DIV_BY_1
-    description: Do not divide clock source.
-    value: 0
-  - name: DIV_BY_2
-    description: Divide clock source by 2.
-    value: 1
-  - name: DIV_BY_3
-    description: Divide clock source by 3.
-    value: 2
-  - name: DIV_BY_4
-    description: Divide clock source by 4.
-    value: 3
-  - name: DIV_BY_5
-    description: Divide clock source by 5.
-    value: 4
-  - name: DIV_BY_6
-    description: Divide clock source by 6.
-    value: 5
-  - name: DIV_BY_7
-    description: Divide clock source by 7.
-    value: 6
-  - name: DIV_BY_8
-    description: Divide clock source by 8.
-    value: 7
-enum/REPEATTX:
-  bit_size: 8
-  variants:
-  - name: DISABLE
-    description: REPEATTX disable.
-    value: 0
-enum/RESETASSERT:
-  bit_size: 1
-  variants:
-  - name: NOP
-    description: Writing 0 has no effect.
-    value: 0
-  - name: ASSERT
-    description: Assert reset.
-    value: 1
-enum/RESETSTKY:
-  bit_size: 1
-  variants:
-  - name: NORES
-    description: The peripheral has not been reset since this bit was last cleared by RESETSTKYCLR in the RSTCTL register.
-    value: 0
-  - name: RESET
-    description: The peripheral was reset since the last bit clear.
-    value: 1
-enum/RESETSTKYCLR:
-  bit_size: 1
-  variants:
-  - name: NOP
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear reset sticky bit.
-    value: 1
-enum/RFE:
-  bit_size: 1
-  variants:
-  - name: NOT_EMPTY
-    description: Receive FIFO is not empty.
-    value: 0
-  - name: EMPTY
-    description: Receive FIFO is empty.
-    value: 1
-enum/RNF:
-  bit_size: 1
-  variants:
-  - name: FULL
-    description: Receive FIFO is full.
-    value: 0
-  - name: NOT_FULL
-    description: Receive FIFO is not full.
-    value: 1
-enum/RXIFLSEL:
-  bit_size: 3
-  variants:
-  - name: LVL_OFF
-    description: Reserved.
-    value: 0
-  - name: LVL_1_4
-    description: RX FIFO >= 1/4 full.
-    value: 1
-  - name: LVL_1_2
-    description: RX FIFO >= 1/2 full (default).
-    value: 2
-  - name: LVL_3_4
-    description: RX FIFO >= 3/4 full.
-    value: 3
-  - name: LVL_RES4
-    description: Reserved.
-    value: 4
-  - name: LVL_FULL
-    description: RX FIFO is full.
-    value: 5
-  - name: LVL_RES6
-    description: Reserved.
-    value: 6
-  - name: LEVEL_1
-    description: Trigger when RX FIFO contains >= 1 frame.
-    value: 7
-enum/SOD:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: SPI can drive the MISO output in peripheral mode.
-    value: 0
-  - name: ENABLE
-    description: SPI cannot drive the MISO output in peripheral mode.
-    value: 1
-enum/SOFT:
-  bit_size: 1
-  variants:
-  - name: IMMEDIATE
-    description: The peripheral will halt immediately, even if the resultant state will result in corruption if the system is restarted.
-    value: 0
-  - name: DELAYED
-    description: The peripheral blocks the debug freeze until it has reached a boundary where it can resume without corruption.
-    value: 1
-enum/SPH:
-  bit_size: 1
-  variants:
-  - name: FIRST
-    description: Data is captured on the first clock edge transition.
-    value: 0
-  - name: SECOND
-    description: Data is captured on the second clock edge transition.
-    value: 1
-enum/CTL1_ENABLE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable module function.
-    value: 0
-  - name: ENABLE
-    description: Enable module function.
-    value: 1
-enum/INT_EVENT0_ICLR_DMA_DONE_RX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/INT_EVENT0_ICLR_DMA_DONE_TX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/INT_EVENT0_ICLR_IDLE:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/INT_EVENT0_ICLR_PER:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/INT_EVENT0_ICLR_RTOUT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Set Interrupt Mask.
-    value: 1
-enum/INT_EVENT0_ICLR_RX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/INT_EVENT0_ICLR_RXFIFO_OVF:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/INT_EVENT0_ICLR_RXFULL:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing has no effect.
-    value: 0
-  - name: CLR
-    description: Clear interrupt.
-    value: 1
-enum/INT_EVENT0_ICLR_TX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/INT_EVENT0_ICLR_TXEMPTY:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/INT_EVENT0_ICLR_TXFIFO_UNF:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing has no effect.
-    value: 0
-  - name: CLR
-    description: Clear interrupt.
-    value: 1
 enum/INT_EVENT0_IIDX_STAT:
   bit_size: 8
   variants:
@@ -1502,105 +1098,6 @@ enum/INT_EVENT0_IMASK_TXFIFO_UNF:
     value: 0
   - name: SET
     description: Set Interrupt Mask.
-    value: 1
-enum/INT_EVENT0_ISET_DMA_DONE_RX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/INT_EVENT0_ISET_DMA_DONE_TX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/INT_EVENT0_ISET_IDLE:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/INT_EVENT0_ISET_PER:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/INT_EVENT0_ISET_RTOUT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt Mask.
-    value: 1
-enum/INT_EVENT0_ISET_RX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/INT_EVENT0_ISET_RXFIFO_OVF:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/INT_EVENT0_ISET_RXFULL:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/INT_EVENT0_ISET_TX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/INT_EVENT0_ISET_TXEMPTY:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/INT_EVENT0_ISET_TXFIFO_UNF:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing has no effect.
-    value: 0
-  - name: SET
-    description: Set interrupt.
     value: 1
 enum/INT_EVENT0_MIS_DMA_DONE_RX:
   bit_size: 1
@@ -1800,24 +1297,6 @@ enum/INT_EVENT0_RIS_TXFIFO_UNF:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/INT_EVENT1_ICLR_RTOUT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Set Interrupt Mask.
-    value: 1
-enum/INT_EVENT1_ICLR_RX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
 enum/INT_EVENT1_IIDX_STAT:
   bit_size: 8
   variants:
@@ -1847,24 +1326,6 @@ enum/INT_EVENT1_IMASK_RX:
     value: 0
   - name: SET
     description: Set Interrupt Mask.
-    value: 1
-enum/INT_EVENT1_ISET_RTOUT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt Mask.
-    value: 1
-enum/INT_EVENT1_ISET_RX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
     value: 1
 enum/INT_EVENT1_MIS_RTOUT:
   bit_size: 1
@@ -1902,15 +1363,6 @@ enum/INT_EVENT1_RIS_RX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/INT_EVENT2_ICLR_TX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
 enum/INT_EVENT2_IIDX_STAT:
   bit_size: 8
   variants:
@@ -1928,15 +1380,6 @@ enum/INT_EVENT2_IMASK_TX:
     value: 0
   - name: SET
     description: Set Interrupt Mask.
-    value: 1
-enum/INT_EVENT2_ISET_TX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
     value: 1
 enum/INT_EVENT2_MIS_TX:
   bit_size: 1
@@ -1956,14 +1399,119 @@ enum/INT_EVENT2_RIS_TX:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/PWREN_ENABLE:
-  bit_size: 1
+enum/RATIO:
+  bit_size: 3
+  variants:
+  - name: DIV_BY_1
+    description: Do not divide clock source.
+    value: 0
+  - name: DIV_BY_2
+    description: Divide clock source by 2.
+    value: 1
+  - name: DIV_BY_3
+    description: Divide clock source by 3.
+    value: 2
+  - name: DIV_BY_4
+    description: Divide clock source by 4.
+    value: 3
+  - name: DIV_BY_5
+    description: Divide clock source by 5.
+    value: 4
+  - name: DIV_BY_6
+    description: Divide clock source by 6.
+    value: 5
+  - name: DIV_BY_7
+    description: Divide clock source by 7.
+    value: 6
+  - name: DIV_BY_8
+    description: Divide clock source by 8.
+    value: 7
+enum/REPEATTX:
+  bit_size: 8
   variants:
   - name: DISABLE
-    description: Disable Power.
+    description: REPEATTX disable.
     value: 0
-  - name: ENABLE
-    description: Enable Power.
+enum/RESETASSERT:
+  bit_size: 1
+  variants:
+  - name: NOP
+    description: Writing 0 has no effect.
+    value: 0
+  - name: ASSERT
+    description: Assert reset.
+    value: 1
+enum/RESETSTKY:
+  bit_size: 1
+  variants:
+  - name: NORES
+    description: The peripheral has not been reset since this bit was last cleared by RESETSTKYCLR in the RSTCTL register.
+    value: 0
+  - name: RESET
+    description: The peripheral was reset since the last bit clear.
+    value: 1
+enum/RESETSTKYCLR:
+  bit_size: 1
+  variants:
+  - name: NOP
+    description: Writing 0 has no effect.
+    value: 0
+  - name: CLR
+    description: Clear reset sticky bit.
+    value: 1
+enum/RNF:
+  bit_size: 1
+  variants:
+  - name: FULL
+    description: Receive FIFO is full.
+    value: 0
+  - name: NOT_FULL
+    description: Receive FIFO is not full.
+    value: 1
+enum/RXIFLSEL:
+  bit_size: 3
+  variants:
+  - name: LVL_OFF
+    description: Reserved.
+    value: 0
+  - name: LVL_1_4
+    description: RX FIFO >= 1/4 full.
+    value: 1
+  - name: LVL_1_2
+    description: RX FIFO >= 1/2 full (default).
+    value: 2
+  - name: LVL_3_4
+    description: RX FIFO >= 3/4 full.
+    value: 3
+  - name: LVL_RES4
+    description: Reserved.
+    value: 4
+  - name: LVL_FULL
+    description: RX FIFO is full.
+    value: 5
+  - name: LVL_RES6
+    description: Reserved.
+    value: 6
+  - name: LEVEL_1
+    description: Trigger when RX FIFO contains >= 1 frame.
+    value: 7
+enum/SOFT:
+  bit_size: 1
+  variants:
+  - name: IMMEDIATE
+    description: The peripheral will halt immediately, even if the resultant state will result in corruption if the system is restarted.
+    value: 0
+  - name: DELAYED
+    description: The peripheral blocks the debug freeze until it has reached a boundary where it can resume without corruption.
+    value: 1
+enum/SPH:
+  bit_size: 1
+  variants:
+  - name: FIRST
+    description: Data is captured on the first clock edge transition.
+    value: 0
+  - name: SECOND
+    description: Data is captured on the second clock edge transition.
     value: 1
 enum/SPO:
   bit_size: 1
@@ -1973,24 +1521,6 @@ enum/SPO:
     value: 0
   - name: HIGH
     description: SPI produces a steady state HIGH value on the CLKOUT.
-    value: 1
-enum/SYSCLK_SEL:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Does not select this clock as a source.
-    value: 0
-  - name: ENABLE
-    description: Select this clock as a source.
-    value: 1
-enum/TFE:
-  bit_size: 1
-  variants:
-  - name: NOT_EMPTY
-    description: Transmit FIFO is not empty.
-    value: 0
-  - name: EMPTY
-    description: Transmit FIFO is empty.
     value: 1
 enum/TNF:
   bit_size: 1

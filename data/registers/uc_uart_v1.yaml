@@ -193,25 +193,21 @@ fieldset/CLKDIV:
     description: 'Selects divide ratio of module clock Division factor 0 : DIV_BY_1 1 : DIV_BY_2 .... 63: DIV_BY_64.'
     bit_offset: 0
     bit_size: 3
-    enum: RATIO
-fieldset/CLKSEL:
+ fieldset/CLKSEL:
   description: Clock Select for Ultra Low Power peripherals.
   fields:
   - name: LFCLK_SEL
     description: Selects LFCLK as clock source if enabled.
     bit_offset: 1
     bit_size: 1
-    enum: LFCLK_SEL
   - name: MFCLK_SEL
     description: Selects MFCLK as clock source if enabled.
     bit_offset: 2
     bit_size: 1
-    enum: MFCLK_SEL
   - name: BUSCLK_SEL
     description: Selects BUS CLK as clock source if enabled.
     bit_offset: 3
     bit_size: 1
-    enum: BUSCLK_SEL
 fieldset/CPU_INT_IMASK:
   description: Interrupt mask.
   fields:
@@ -317,97 +313,78 @@ fieldset/CPU_INT_ISET:
     description: Set UARTOUT Receive Time-Out Interrupt.
     bit_offset: 0
     bit_size: 1
-    enum: CPU_INT_ISET_RTOUT
   - name: FRMERR
     description: Set UART Framing Error Interrupt.
     bit_offset: 1
     bit_size: 1
-    enum: CPU_INT_ISET_FRMERR
   - name: PARERR
     description: Set UART Parity Error Interrupt.
     bit_offset: 2
     bit_size: 1
-    enum: CPU_INT_ISET_PARERR
   - name: BRKERR
     description: Set UART Break Error Interrupt.
     bit_offset: 3
     bit_size: 1
-    enum: CPU_INT_ISET_BRKERR
   - name: OVRERR
     description: Set UART Receive Overrun Error Interrupt.
     bit_offset: 4
     bit_size: 1
-    enum: CPU_INT_ISET_OVRERR
   - name: RXNE
     description: Set Negative Edge on UARTxRXD Interrupt.
     bit_offset: 5
     bit_size: 1
-    enum: CPU_INT_ISET_RXNE
   - name: RXPE
     description: Set Positive Edge on UARTxRXD Interrupt.
     bit_offset: 6
     bit_size: 1
-    enum: CPU_INT_ISET_RXPE
   - name: LINC0
     description: Set LIN Capture 0 / Match Interrupt.
     bit_offset: 7
     bit_size: 1
-    enum: CPU_INT_ISET_LINC0
   - name: LINC1
     description: Set LIN Capture 1 Interrupt.
     bit_offset: 8
     bit_size: 1
-    enum: CPU_INT_ISET_LINC1
   - name: LINOVF
     description: Set LIN Hardware Counter Overflow Interrupt.
     bit_offset: 9
     bit_size: 1
-    enum: CPU_INT_ISET_LINOVF
   - name: RXINT
     description: Set UART Receive Interrupt.
     bit_offset: 10
     bit_size: 1
-    enum: CPU_INT_ISET_RXINT
   - name: TXINT
     description: Set UART Transmit Interrupt.
     bit_offset: 11
     bit_size: 1
-    enum: CPU_INT_ISET_TXINT
   - name: EOT
     description: Set UART End of Transmission Interrupt Indicates that the last bit of all transmitted data and flags has left the serializer and without any further Data in the TX Fifo or Buffer.
     bit_offset: 12
     bit_size: 1
-    enum: CPU_INT_ISET_EOT
   - name: ADDR_MATCH
     description: Set Address Match Interrupt.
     bit_offset: 13
     bit_size: 1
-    enum: CPU_INT_ISET_ADDR_MATCH
   - name: CTS
     description: Set UART Clear to Send Modem Interrupt.
     bit_offset: 14
     bit_size: 1
-    enum: CPU_INT_ISET_CTS
   - name: DMA_DONE_RX
     description: Set DMA Done on RX Event Channel Interrupt.
     bit_offset: 15
     bit_size: 1
-    enum: CPU_INT_ISET_DMA_DONE_RX
   - name: DMA_DONE_TX
     description: Set DMA Done on TX Event Channel Interrupt.
     bit_offset: 16
     bit_size: 1
-    enum: CPU_INT_ISET_DMA_DONE_TX
   - name: NERR
     description: Noise Error on triple voting. Asserted when the 3 samples of majority voting are not equal.
     bit_offset: 17
     bit_size: 1
-    enum: CPU_INT_ISET_NERR
   - name: LTOUT
     description: Set UARTOUT Line Time-Out Interrupt.
     bit_offset: 20
     bit_size: 1
-    enum: CPU_INT_ISET_LTOUT
 fieldset/CPU_INT_MIS:
   description: Masked interrupt status.
   fields:
@@ -611,27 +588,22 @@ fieldset/CTL0:
     description: UART Module Enable. If the UART is disabled in the middle of transmission or reception, it completes the current character before stopping. If the ENABLE bit is not set, all registers can still be accessed and updated. It is recommended to setup and change the UART operation mode with having the ENABLE bit cleared to avoid unpredictable behavior during the setup or update. If disabled the UART module will not send or receive any data and the logic is held in reset state.
     bit_offset: 0
     bit_size: 1
-    enum: ENABLE
   - name: LBE
     description: UART Loop Back Enable.
     bit_offset: 2
     bit_size: 1
-    enum: LBE
   - name: RXE
     description: 'UART Receive Enable If the UART is disabled in the middle of a receive, it completes the current character before stopping. #b#NOTE:#/b# To enable reception, the UARTEN bit must be set.'
     bit_offset: 3
     bit_size: 1
-    enum: RXE
   - name: TXE
     description: 'UART Transmit Enable If the UART is disabled in the middle of a transmission, it completes the current character before stopping. #b#NOTE:#/b# To enable transmission, the UARTEN bit must be set.'
     bit_offset: 4
     bit_size: 1
-    enum: TXE
   - name: TXD_OUT_EN
     description: TXD Pin Control Enable. When the transmit section of the UART is disabled (TXE = 0), the TXD pin can be controlled by the TXD_OUT bit.
     bit_offset: 5
     bit_size: 1
-    enum: TXD_OUT_EN
   - name: TXD_OUT
     description: TXD Pin Control Controls the TXD pin when TXD_OUT_EN = 1 and TXE = 0.
     bit_offset: 6
@@ -641,7 +613,6 @@ fieldset/CTL0:
     description: Manchester Encode enable.
     bit_offset: 7
     bit_size: 1
-    enum: MENC
   - name: MODE
     description: 'Set the communication mode and protocol used. (Not defined settings uses the default setting: 0).'
     bit_offset: 8
@@ -656,12 +627,10 @@ fieldset/CTL0:
     description: Enable hardware controlled Request to Send.
     bit_offset: 13
     bit_size: 1
-    enum: RTSEN
   - name: CTSEN
     description: Enable Clear To Send.
     bit_offset: 14
     bit_size: 1
-    enum: CTSEN
   - name: HSE
     description: 'High-Speed Bit Oversampling Enable #b#NOTE:#/b# The bit oversampling influences the UART baud-rate configuration. The state of this bit has no effect on clock generation in ISO7816 smart card mode (the SMART bit is set).'
     bit_offset: 15
@@ -671,12 +640,10 @@ fieldset/CTL0:
     description: 'Majority Vote Enable When Majority Voting is enabled, the three center bits are used to determine received sample value. In case of error (i.e. all 3 bits are not the same), noise error is detected and bits RIS.NERR and register RXDATA.NERR are set. Oversampling of 16 : bits 7, 8, 9 are used Oversampling of 8 : bits 3, 4, 5 are used Disabled : Single sample value (center value) used.'
     bit_offset: 18
     bit_size: 1
-    enum: MAJVOTE
   - name: MSBFIRST
     description: 'Most Significant Bit First This bit has effect both on the way protocol byte is transmitted and received. Notes: User needs to match the protocol to the correct value of this bit to send MSb or LSb first. The hardware engine will send the byte entirely based on this bit.'
     bit_offset: 19
     bit_size: 1
-    enum: MSBFIRST
 fieldset/DMA_TRIG_RX_IMASK:
   description: Interrupt mask.
   fields:
@@ -697,12 +664,10 @@ fieldset/DMA_TRIG_RX_ISET:
     description: Set UARTOUT Receive Time-Out Interrupt.
     bit_offset: 0
     bit_size: 1
-    enum: DMA_TRIG_RX_ISET_RTOUT
   - name: RXINT
     description: Set UART Receive Interrupt.
     bit_offset: 10
     bit_size: 1
-    enum: DMA_TRIG_RX_ISET_RXINT
 fieldset/DMA_TRIG_RX_MIS:
   description: Masked interrupt status.
   fields:
@@ -744,7 +709,6 @@ fieldset/DMA_TRIG_TX_ISET:
     description: Set UART Transmit Interrupt.
     bit_offset: 11
     bit_size: 1
-    enum: DMA_TRIG_TX_ISET_TXINT
 fieldset/DMA_TRIG_TX_MIS:
   description: Masked interrupt status.
   fields:
@@ -782,97 +746,78 @@ fieldset/ICLR:
     description: Clear UARTOUT Receive Time-Out Interrupt.
     bit_offset: 0
     bit_size: 1
-    enum: ICLR_RTOUT
   - name: FRMERR
     description: Clear UART Framing Error Interrupt.
     bit_offset: 1
     bit_size: 1
-    enum: ICLR_FRMERR
   - name: PARERR
     description: Clear UART Parity Error Interrupt.
     bit_offset: 2
     bit_size: 1
-    enum: ICLR_PARERR
   - name: BRKERR
     description: Clear UART Break Error Interrupt.
     bit_offset: 3
     bit_size: 1
-    enum: ICLR_BRKERR
   - name: OVRERR
     description: Clear UART Receive Overrun Error Interrupt.
     bit_offset: 4
     bit_size: 1
-    enum: ICLR_OVRERR
   - name: RXNE
     description: Clear Negative Edge on UARTxRXD Interrupt.
     bit_offset: 5
     bit_size: 1
-    enum: ICLR_RXNE
   - name: RXPE
     description: Clear Positive Edge on UARTxRXD Interrupt.
     bit_offset: 6
     bit_size: 1
-    enum: ICLR_RXPE
   - name: LINC0
     description: Clear LIN Capture 0 / Match Interrupt.
     bit_offset: 7
     bit_size: 1
-    enum: ICLR_LINC0
   - name: LINC1
     description: Clear LIN Capture 1 Interrupt.
     bit_offset: 8
     bit_size: 1
-    enum: ICLR_LINC1
   - name: LINOVF
     description: Clear LIN Hardware Counter Overflow Interrupt.
     bit_offset: 9
     bit_size: 1
-    enum: ICLR_LINOVF
   - name: RXINT
     description: Clear UART Receive Interrupt.
     bit_offset: 10
     bit_size: 1
-    enum: ICLR_RXINT
   - name: TXINT
     description: Clear UART Transmit Interrupt.
     bit_offset: 11
     bit_size: 1
-    enum: ICLR_TXINT
   - name: EOT
     description: Clear UART End of Transmission Interrupt Indicates that the last bit of all transmitted data and flags has left the serializer and without any further Data in the TX Fifo or Buffer.
     bit_offset: 12
     bit_size: 1
-    enum: ICLR_EOT
   - name: ADDR_MATCH
     description: Clear Address Match Interrupt.
     bit_offset: 13
     bit_size: 1
-    enum: ICLR_ADDR_MATCH
   - name: CTS
     description: Clear UART Clear to Send Modem Interrupt.
     bit_offset: 14
     bit_size: 1
-    enum: ICLR_CTS
   - name: DMA_DONE_RX
     description: Clear DMA Done on RX Event Channel Interrupt.
     bit_offset: 15
     bit_size: 1
-    enum: ICLR_DMA_DONE_RX
   - name: DMA_DONE_TX
     description: Clear DMA Done on TX Event Channel Interrupt.
     bit_offset: 16
     bit_size: 1
-    enum: ICLR_DMA_DONE_TX
   - name: NERR
     description: Noise Error on triple voting. Asserted when the 3 samples of majority voting are not equal.
     bit_offset: 17
     bit_size: 1
-    enum: ICLR_NERR
   - name: LTOUT
     description: Clear UARTOUT Line Time-Out Interrupt.
     bit_offset: 20
     bit_size: 1
-    enum: ICLR_LTOUT
 fieldset/IFLS:
   description: UART Interrupt FIFO Level Select Register.
   fields:
@@ -885,7 +830,6 @@ fieldset/IFLS:
     description: TX FIFO CLEAR. Setting this bit will clear the TX FIFO contents.
     bit_offset: 3
     bit_size: 1
-    enum: IFLS_TXCLR
   - name: RXIFLSEL
     description: 'FIFO Level Select for generating events (interrupt/dma). Note: for undefined settings the default configuration is used.'
     bit_offset: 4
@@ -895,7 +839,6 @@ fieldset/IFLS:
     description: RX FIFO CLEAR. Setting this bit will clear the RX FIFO contents.
     bit_offset: 7
     bit_size: 1
-    enum: IFLS_RXCLR
   - name: RXTOSEL
     description: UART Receive Interrupt Timeout Select. When receiving no start edge for an additional character within the set bittimes a RX interrupt is set even if the FIFO level is not reached. A value of 0 disables this function.
     bit_offset: 8
@@ -923,7 +866,6 @@ fieldset/IRCTL:
     description: IrDA encoder/decoder enable.
     bit_offset: 0
     bit_size: 1
-    enum: IREN
   - name: IRTXCLK
     description: IrDA transmit pulse clock select.
     bit_offset: 1
@@ -945,12 +887,10 @@ fieldset/LCRH:
     description: UART Send Break (for LIN Protocol) 1. Break condition is sent on the line for as long as this bit is set.
     bit_offset: 0
     bit_size: 1
-    enum: BRK
   - name: PEN
     description: UART Parity Enable.
     bit_offset: 1
     bit_size: 1
-    enum: PEN
   - name: EPS
     description: UART Even Parity Select This bit has no effect when parity is disabled by the PEN bit. For 9-Bit UART Mode transmissions, this bit controls the address byte and data byte indication (9th bit). 0 = The transferred byte is a data byte 1 = The transferred byte is an address byte.
     bit_offset: 2
@@ -960,7 +900,6 @@ fieldset/LCRH:
     description: UART Two Stop Bits Select When in 7816 smart card mode (the SMART bit is set in the UARTCTL register), the number of stop bits is forced to 2.
     bit_offset: 3
     bit_size: 1
-    enum: STP2
   - name: WLEN
     description: UART Word Length The bits indicate the number of data bits transmitted or received in a frame as follows:.
     bit_offset: 4
@@ -970,12 +909,10 @@ fieldset/LCRH:
     description: UART Stick Parity Select The Stick Parity Select (SPS) bit is used to set either a permanent '1' or a permanent '0' as parity when transmitting or receiving data. Its purpose is to typically indicate the first byte of a package or to mark an address byte, for example in a multi-drop RS-485 network. When bits PEN, EPS, and SPS of UARTLCRH are set, the parity bit is transmitted and checked as a 0. When bits PEN and SPS are set and EPS is cleared, the parity bit is transmitted and checked as a 1.
     bit_offset: 6
     bit_size: 1
-    enum: SPS
   - name: SENDIDLE
     description: UART send IDLE pattern. When this bit is set, SENDIDLE period of 11 bit times will be sent on the TX line. Read STAT.SENDIDLE bit to readback current status of SENDIDLE.
     bit_offset: 7
     bit_size: 1
-    enum: LCRH_SENDIDLE
   - name: EXTDIR_SETUP
     description: Defines the number of UARTclk ticks the signal to control the external driver for the RS485 will be set before the START bit is send.
     bit_offset: 16
@@ -988,7 +925,6 @@ fieldset/LCRH:
     description: Suspend external communication.
     bit_offset: 26
     bit_size: 1
-    enum: SUSPEND
 fieldset/LINC0:
   description: UART LIN Mode Capture 0 Register.
   fields:
@@ -1017,32 +953,26 @@ fieldset/LINCTL:
     description: LIN Counter Enable. LIN counter will only count when enabled.
     bit_offset: 0
     bit_size: 1
-    enum: CTRENA
   - name: ZERONE
     description: Zero on negative Edge of RXD. When enabled the counter is set to 0 and starts counting on a negative edge of RXD.
     bit_offset: 1
     bit_size: 1
-    enum: ZERONE
   - name: CNTRXLOW
     description: Count while low Signal on RXD When counter is enabled and the signal on RXD is low, the counter increments.
     bit_offset: 2
     bit_size: 1
-    enum: CNTRXLOW
   - name: LINC0CAP
     description: Capture Counter on negative RXD Edge. When enabled the counter value is captured to LINC0 register on each negative RXD edge. A LINC0 interrupt is triggered when enabled.
     bit_offset: 4
     bit_size: 1
-    enum: LINC0CAP
   - name: LINC1CAP
     description: Capture Counter on positive RXD Edge. When enabled the counter value is captured to LINC1 register on each positive RXD edge. A LINC1 interrupt is triggered when enabled.
     bit_offset: 5
     bit_size: 1
-    enum: LINC1CAP
   - name: LINC0_MATCH
     description: Counter Compare Match Mode When this bit is set to 1 a counter compare match with LINC0 register triggers an LINC0 interrupt when enabled.
     bit_offset: 6
     bit_size: 1
-    enum: LINC0_MATCH
 fieldset/PDBGCTL:
   description: Peripheral Debug Control.
   fields:
@@ -1143,24 +1073,6 @@ fieldset/TXDATA:
     description: Data Transmitted or Received Data that is to be transmitted via the UART is written to this field. When read, this field contains the data that was received by the UART.
     bit_offset: 0
     bit_size: 8
-enum/BRK:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Normal operation.
-    value: 0
-  - name: ENABLE
-    description: A low level is continually output on the UARTxTXD signal, after completing transmission of the current character. For the proper execution of the break command, software must set this bit for at least two frames (character periods).
-    value: 1
-enum/BUSCLK_SEL:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Does not select this clock as a source.
-    value: 0
-  - name: ENABLE
-    description: Select this clock as a source.
-    value: 1
 enum/BUSY:
   bit_size: 1
   variants:
@@ -1169,15 +1081,6 @@ enum/BUSY:
     value: 0
   - name: SET
     description: The UART is busy transmitting data. This bit remains set until the complete byte, including all stop bits, has been sent/received from/into the shift register.
-    value: 1
-enum/CNTRXLOW:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Count while low Signal on UARTxRXD disabled.
-    value: 0
-  - name: ENABLE
-    description: Count while low Signal on UARTxRXD enabled.
     value: 1
 enum/CPU_INT_IMASK_ADDR_MATCH:
   bit_size: 1
@@ -1349,177 +1252,6 @@ enum/CPU_INT_IMASK_TXINT:
     value: 0
   - name: SET
     description: Set Interrupt Mask.
-    value: 1
-enum/CPU_INT_ISET_ADDR_MATCH:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_BRKERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_CTS:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_DMA_DONE_RX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Interrupt disabled.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_DMA_DONE_TX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Interrupt disabled.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_EOT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_FRMERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_LINC0:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_LINC1:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_LINOVF:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_LTOUT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_NERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing this has no effect.
-    value: 0
-  - name: SET
-    description: Set the interrupt.
-    value: 1
-enum/CPU_INT_ISET_OVRERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_PARERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_RTOUT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_RXINT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_RXNE:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_RXPE:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_TXINT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
     value: 1
 enum/CPU_INT_MIS_ADDR_MATCH:
   bit_size: 1
@@ -1863,24 +1595,6 @@ enum/CPU_INT_RIS_TXINT:
   - name: SET
     description: Interrupt occurred.
     value: 1
-enum/CTRENA:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Counter disabled.
-    value: 0
-  - name: ENABLE
-    description: Counter enabled.
-    value: 1
-enum/CTSEN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: CTS hardware flow control is disabled.
-    value: 0
-  - name: ENABLE
-    description: CTS hardware flow control is enabled. Data is only transmitted when the UARTxCTS signal is asserted.
-    value: 1
 enum/DMA_TRIG_RX_IMASK_RTOUT:
   bit_size: 1
   variants:
@@ -1898,24 +1612,6 @@ enum/DMA_TRIG_RX_IMASK_RXINT:
     value: 0
   - name: SET
     description: Set Interrupt Mask.
-    value: 1
-enum/DMA_TRIG_RX_ISET_RTOUT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/DMA_TRIG_RX_ISET_RXINT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
     value: 1
 enum/DMA_TRIG_RX_MIS_RTOUT:
   bit_size: 1
@@ -1962,15 +1658,6 @@ enum/DMA_TRIG_TX_IMASK_TXINT:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/DMA_TRIG_TX_ISET_TXINT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
 enum/DMA_TRIG_TX_MIS_TXINT:
   bit_size: 1
   variants:
@@ -1988,15 +1675,6 @@ enum/DMA_TRIG_TX_RIS_TXINT:
     value: 0
   - name: SET
     description: Interrupt occurred.
-    value: 1
-enum/ENABLE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable Module.
-    value: 0
-  - name: ENABLE
-    description: Enable module.
     value: 1
 enum/EPS:
   bit_size: 1
@@ -2028,177 +1706,6 @@ enum/HSE:
   - name: OVS3
     description: 3x oversampling. IrDA, Manchester and DALI not supported when 3x oversampling is enabled.
     value: 2
-enum/ICLR_ADDR_MATCH:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_BRKERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_CTS:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_DMA_DONE_RX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Interrupt disabled.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_DMA_DONE_TX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Interrupt disabled.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_EOT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_FRMERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_LINC0:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_LINC1:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_LINOVF:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_LTOUT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_NERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_OVRERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_PARERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_RTOUT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_RXINT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_RXNE:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_RXPE:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_TXINT:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
 enum/IDLE:
   bit_size: 1
   variants:
@@ -2208,24 +1715,6 @@ enum/IDLE:
   - name: SET
     description: IDLE has been detected before last received character. (In idle-line multiprocessor mode).
     value: 1
-enum/IFLS_RXCLR:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable FIFO clear.
-    value: 0
-  - name: ENABLE
-    description: Enable FIFO Clear.
-    value: 1
-enum/IFLS_TXCLR:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable FIFO clear.
-    value: 0
-  - name: ENABLE
-    description: Enable FIFO Clear.
-    value: 1
 enum/INTEVAL:
   bit_size: 1
   variants:
@@ -2234,15 +1723,6 @@ enum/INTEVAL:
     value: 0
   - name: EVAL
     description: The interrupt or event line is in software mode. Software must clear the RIS.
-    value: 1
-enum/IREN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: IrDA encoder/decoder disabled.
-    value: 0
-  - name: ENABLE
-    description: IrDA encoder/decoder enabled.
     value: 1
 enum/IRRXPL:
   bit_size: 1
@@ -2261,87 +1741,6 @@ enum/IRTXCLK:
     value: 0
   - name: BRCLK
     description: IrDA encode data is based on the Baud Rate clock< when select 8x oversampling, the IRTXPL cycle should less 8; when select 16x oversampling, the IRTXPL cycle should less 16.
-    value: 1
-enum/LBE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Normal operation.
-    value: 0
-  - name: ENABLE
-    description: The UARTxTX path is fed through the UARTxRX path internally.
-    value: 1
-enum/LCRH_SENDIDLE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Normal operation.
-    value: 0
-  - name: ENABLE
-    description: Send Idle Pattern.
-    value: 1
-enum/LFCLK_SEL:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Does not select this clock as a source.
-    value: 0
-  - name: ENABLE
-    description: Select this clock as a source.
-    value: 1
-enum/LINC0CAP:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Capture counter on negative UARTxRXD edge disabled.
-    value: 0
-  - name: ENABLE
-    description: Capture counter on negative UARTxRXD edge enabled.
-    value: 1
-enum/LINC0_MATCH:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Counter compare match mode disabled (capture mode enabled).
-    value: 0
-  - name: ENABLE
-    description: Counter compare match enabled (capture mode disabled).
-    value: 1
-enum/LINC1CAP:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Capture counter on positive UARTxRXD edge disabled.
-    value: 0
-  - name: ENABLE
-    description: Capture counter on positive UARTxRXD edge enabled.
-    value: 1
-enum/MAJVOTE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Majority voting is disabled.
-    value: 0
-  - name: ENABLE
-    description: Majority voting is enabled.
-    value: 1
-enum/MENC:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable Manchester Encoding.
-    value: 0
-  - name: ENABLE
-    description: Enable Manchester Encoding.
-    value: 1
-enum/MFCLK_SEL:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Does not select this clock as a source.
-    value: 0
-  - name: ENABLE
-    description: Select this clock as a source.
     value: 1
 enum/MODE:
   bit_size: 3
@@ -2364,63 +1763,6 @@ enum/MODE:
   - name: DALI
     description: DALI Mode:.
     value: 5
-enum/MSBFIRST:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Least significant bit is sent first in the protocol packet.
-    value: 0
-  - name: ENABLE
-    description: Most significant bit is sent first in the protocol packet.
-    value: 1
-enum/PEN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Parity is disabled and no parity bit is added to the data frame.
-    value: 0
-  - name: ENABLE
-    description: Parity checking and generation is enabled.
-    value: 1
-enum/RATIO:
-  bit_size: 3
-  variants:
-  - name: DIV_BY_1
-    description: Do not divide clock source.
-    value: 0
-  - name: DIV_BY_2
-    description: Divide clock source by 2.
-    value: 1
-  - name: DIV_BY_3
-    description: Divide clock source by 3.
-    value: 2
-  - name: DIV_BY_4
-    description: Divide clock source by 4.
-    value: 3
-  - name: DIV_BY_5
-    description: Divide clock source by 5.
-    value: 4
-  - name: DIV_BY_6
-    description: Divide clock source by 6.
-    value: 5
-  - name: DIV_BY_7
-    description: Divide clock source by 7.
-    value: 6
-  - name: DIV_BY_8
-    description: Divide clock source by 8.
-    value: 7
-  - name: DIV_BY_61
-    description: Divide clock source by 8.
-    value: 60
-  - name: DIV_BY_62
-    description: Divide clock source by 8.
-    value: 61
-  - name: DIV_BY_63
-    description: Divide clock source by 8.
-    value: 62
-  - name: DIV_BY_64
-    description: Divide clock source by 8.
-    value: 63
 enum/RTS:
   bit_size: 1
   variants:
@@ -2429,15 +1771,6 @@ enum/RTS:
     value: 0
   - name: SET
     description: Signal RTS.
-    value: 1
-enum/RTSEN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: RTS hardware flow control is disabled.
-    value: 0
-  - name: ENABLE
-    description: RTS hardware flow control is enabled. Data is only requested (by asserting UARTxRTS) when the receive FIFO/buffer has available entries.
     value: 1
 enum/RXDATA_BRKERR:
   bit_size: 1
@@ -2474,15 +1807,6 @@ enum/RXDATA_PARERR:
     value: 0
   - name: SET
     description: The parity of the received data character does not match the parity defined by bits 2 and 7 of the UARTLCRH register.
-    value: 1
-enum/RXE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: The receive section of the UART is disabled.
-    value: 0
-  - name: ENABLE
-    description: The receive section of the UART is enabled.
     value: 1
 enum/RXFE:
   bit_size: 1
@@ -2534,15 +1858,6 @@ enum/SOFT:
     value: 0
   - name: DELAYED
     description: The peripheral blocks the debug freeze until it has reached a boundary where it can resume without corruption.
-    value: 1
-enum/SPS:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable Stick Parity.
-    value: 0
-  - name: ENABLE
-    description: Enable Stick Parity.
     value: 1
 enum/STAT:
   bit_size: 8
@@ -2649,24 +1964,6 @@ enum/STAT_TXCLR:
   - name: SET
     description: FIFO clear is complete.
     value: 1
-enum/STP2:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: One stop bit is transmitted at the end of a frame.
-    value: 0
-  - name: ENABLE
-    description: Two stop bits are transmitted at the end of a frame. The receive logic checks for two stop bits being received and provide Frame Error if either is invalid.
-    value: 1
-enum/SUSPEND:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Functional mode resumed.
-    value: 0
-  - name: ENABLE
-    description: External communication suspended.
-    value: 1
 enum/TXD_OUT:
   bit_size: 1
   variants:
@@ -2675,24 +1972,6 @@ enum/TXD_OUT:
     value: 0
   - name: HIGH
     description: TXD pin is high.
-    value: 1
-enum/TXD_OUT_EN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: TXD pin can not be controlled by TXD_OUT.
-    value: 0
-  - name: ENABLE
-    description: TXD pin can be controlled by TXD_OUT.
-    value: 1
-enum/TXE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: The transmit section of the UART is disabled. The UARTxTXD pin of the UART can be controlled by the TXD_CTL bit when enabled.
-    value: 0
-  - name: ENABLE
-    description: The transmit section of the UART is enabled.
     value: 1
 enum/TXFE:
   bit_size: 1
@@ -2751,12 +2030,3 @@ enum/WLEN:
   - name: DATABIT8
     description: 8 bits.
     value: 3
-enum/ZERONE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Zero on negative edge disabled.
-    value: 0
-  - name: ENABLE
-    description: Zero on negative edge enabled.
-    value: 1

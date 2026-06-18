@@ -173,27 +173,22 @@ fieldset/ACKCTL:
     description: I2C Target ACK Override Enable Read SR.ACKOEN to check current status of this bit.
     bit_offset: 0
     bit_size: 1
-    enum: ACKCTL_ACKOEN
   - name: ACKOVAL
     description: 'ACK Override Value Note: Override control is not applicable to Address frame. Bytes following address frame can be acknowledged using ACKOVAL.'
     bit_offset: 1
     bit_size: 1
-    enum: ACKOVAL
   - name: ACKOEN_ON_START
     description: When set this bit will automatically enable target override acknowlede following a Start Condition. Status bit ACKOEN will reflect a value of '1' when automatic override enable is used.
     bit_offset: 2
     bit_size: 1
-    enum: ACKOEN_ON_START
   - name: ACKOEN_ON_PECNEXT
     description: When set this bit will automatically turn on the Target acknowledge override following a ACK/NACK of the byte received just prior to the PEC byte. However, setting ACKCTL.ACKOEN bit will not automatically be ACKed/NACKed by the State Machine and firmware must perform this function by writing Target.ACKCTL register. Status bit ACKOEN will reflect a value of '1' when automatic override enable is used.
     bit_offset: 3
     bit_size: 1
-    enum: ACKOEN_ON_PECNEXT
   - name: ACKOEN_ON_PECDONE
     description: When set, this bit will automatically turn on target acknowledge enable field following the ACK/NACK of the received PEC byte. Status bit ACKOEN will reflect a value of '1' when automatic override enable is used.
     bit_offset: 4
     bit_size: 1
-    enum: ACKOEN_ON_PECDONE
 fieldset/CLKDIV:
   description: Clock Divider.
   fields:
@@ -209,12 +204,10 @@ fieldset/CLKSEL:
     description: Selects MFCLK as clock source if enabled.
     bit_offset: 2
     bit_size: 1
-    enum: MFCLK_SEL
   - name: BUSCLK_SEL
     description: Selects BUS CLK as clock source if enabled.
     bit_offset: 3
     bit_size: 1
-    enum: BUSCLK_SEL
 fieldset/CPU_INT_IMASK:
   description: Interrupt mask.
   fields:
@@ -310,87 +303,70 @@ fieldset/CPU_INT_ISET:
     description: Target Receive Data Interrupt Signals that a byte has been received.
     bit_offset: 0
     bit_size: 1
-    enum: CPU_INT_ISET_RXDONE
   - name: TXDONE
     description: Target Transmit Transaction completed Interrupt.
     bit_offset: 1
     bit_size: 1
-    enum: CPU_INT_ISET_TXDONE
   - name: RXTRG
     description: Receive Trigger.
     bit_offset: 2
     bit_size: 1
-    enum: CPU_INT_ISET_RXTRG
   - name: TXTRG
     description: Transmit Trigger.
     bit_offset: 3
     bit_size: 1
-    enum: CPU_INT_ISET_TXTRG
   - name: RXFULL
     description: RXFIFO full event. This interrupt is set if an RX FIFO is full.
     bit_offset: 4
     bit_size: 1
-    enum: CPU_INT_ISET_RXFULL
   - name: TXEMPTY
     description: Transmit FIFO Empty interrupt mask. This interrupt is set if all data in the Transmit FIFO have been shifted out and the transmit goes into idle mode.
     bit_offset: 5
     bit_size: 1
-    enum: CPU_INT_ISET_TXEMPTY
   - name: TX_UNFL
     description: Target TX FIFO underflow.
     bit_offset: 6
     bit_size: 1
-    enum: CPU_INT_ISET_TX_UNFL
   - name: RX_OVFL
     description: Target RX FIFO overflow.
     bit_offset: 7
     bit_size: 1
-    enum: CPU_INT_ISET_RX_OVFL
   - name: GENCALL
     description: General Call Interrupt.
     bit_offset: 8
     bit_size: 1
-    enum: CPU_INT_ISET_GENCALL
   - name: START
     description: Start Condition Interrupt.
     bit_offset: 9
     bit_size: 1
-    enum: CPU_INT_ISET_START
   - name: STOP
     description: Stop Condition Interrupt.
     bit_offset: 10
     bit_size: 1
-    enum: CPU_INT_ISET_STOP
   - name: PEC_RX_ERR
     description: Target RX Pec Error Interrupt.
     bit_offset: 11
     bit_size: 1
-    enum: CPU_INT_ISET_PEC_RX_ERR
   - name: TIMEOUTA
     description: Timeout A interrupt.
     bit_offset: 12
     bit_size: 1
-    enum: CPU_INT_ISET_TIMEOUTA
   - name: TIMEOUTB
     description: Timeout B Interrupt.
     bit_offset: 13
     bit_size: 1
-    enum: CPU_INT_ISET_TIMEOUTB
   - name: DMA_DONE_RX
     description: DMA Done on Event Channel RX.
     bit_offset: 15
     bit_size: 1
-    enum: CPU_INT_ISET_DMA_DONE_RX
   - name: DMA_DONE_TX
     description: DMA Done on Event Channel TX.
     bit_offset: 16
     bit_size: 1
-    enum: CPU_INT_ISET_DMA_DONE_TX
   - name: ARBLOST
     description: Arbitration Lost Interrupt.
     bit_offset: 17
     bit_size: 1
-    enum: CPU_INT_ISET_ARBLOST
 fieldset/CPU_INT_MIS:
   description: Masked interrupt status.
   fields:
@@ -574,62 +550,50 @@ fieldset/CTR:
     description: Setting this bit enables the module.
     bit_offset: 0
     bit_size: 1
-    enum: ENABLE
   - name: GENCALL
     description: General call response enable Modify only when UCSWRST = 1. 0b = Do not respond to a general call 1b = Respond to a general call.
     bit_offset: 1
     bit_size: 1
-    enum: CTR_GENCALL
   - name: TXEMPTY_ON_TREQ
     description: Tx Empty Interrupt on TREQ.
     bit_offset: 3
     bit_size: 1
-    enum: TXEMPTY_ON_TREQ
   - name: TXTRIG_TXMODE
     description: Tx Trigger when Target FSM is in Tx Mode.
     bit_offset: 4
     bit_size: 1
-    enum: TXTRIG_TXMODE
   - name: TXWAIT_STALE_TXFIFO
     description: 'Tx transfer waits when stale data in Tx FIFO. This prevents stale bytes left in the TX FIFO from automatically being sent on the next I2C packet. Note: this should be used with TXEMPTY_ON_TREQ set to prevent the Target State Machine from waiting for TX FIFO data without an interrupt notification when the FIFO data is stale.'
     bit_offset: 5
     bit_size: 1
-    enum: TXWAIT_STALE_TXFIFO
   - name: RXFULL_ON_RREQ
     description: Rx full interrupt generated on RREQ condition as indicated in SSR.
     bit_offset: 6
     bit_size: 1
-    enum: RXFULL_ON_RREQ
   - name: EN_DEFHOSTADR
     description: Enable Default Host Address.
     bit_offset: 7
     bit_size: 1
-    enum: EN_DEFHOSTADR
   - name: EN_ALRESPADR
     description: Enable Alert Response Address.
     bit_offset: 8
     bit_size: 1
-    enum: EN_ALRESPADR
   - name: EN_DEFDEVADR
     description: Enable Default device address.
     bit_offset: 9
     bit_size: 1
-    enum: EN_DEFDEVADR
   - name: SUSPEND
     description: Suspend external communication.
     bit_offset: 11
     bit_size: 1
-    enum: SUSPEND
   - name: CLKSTRETCH
     description: Clock Stretch Enable.
     bit_offset: 20
     bit_size: 1
-    enum: CLKSTRETCH
   - name: WUEN
     description: Target Wakeup Enable.
     bit_offset: 21
     bit_size: 1
-    enum: WUEN
 fieldset/DMA_TRIG0_IMASK:
   description: Interrupt mask.
   fields:
@@ -645,7 +609,6 @@ fieldset/DMA_TRIG0_ISET:
     description: Transmit Trigger.
     bit_offset: 3
     bit_size: 1
-    enum: DMA_TRIG0_ISET_TXTRG
 fieldset/DMA_TRIG0_MIS:
   description: Masked interrupt status.
   fields:
@@ -677,7 +640,6 @@ fieldset/DMA_TRIG1_ISET:
     description: Receive Trigger.
     bit_offset: 2
     bit_size: 1
-    enum: DMA_TRIG1_ISET_RXTRG
 fieldset/DMA_TRIG1_MIS:
   description: Masked interrupt status.
   fields:
@@ -701,7 +663,6 @@ fieldset/GFCTL:
     description: Analog Glitch Suppression Enable.
     bit_offset: 8
     bit_size: 1
-    enum: AGFEN
 fieldset/ICLR:
   description: Interrupt clear.
   fields:
@@ -709,87 +670,70 @@ fieldset/ICLR:
     description: Target Receive Data Interrupt Signals that a byte has been received.
     bit_offset: 0
     bit_size: 1
-    enum: ICLR_RXDONE
   - name: TXDONE
     description: Target Transmit Transaction completed Interrupt.
     bit_offset: 1
     bit_size: 1
-    enum: ICLR_TXDONE
   - name: RXTRG
     description: Receive Trigger.
     bit_offset: 2
     bit_size: 1
-    enum: ICLR_RXTRG
   - name: TXTRG
     description: Transmit Trigger.
     bit_offset: 3
     bit_size: 1
-    enum: ICLR_TXTRG
   - name: RXFULL
     description: RXFIFO full event. This interrupt is set if an RX FIFO is full.
     bit_offset: 4
     bit_size: 1
-    enum: ICLR_RXFULL
   - name: TXEMPTY
     description: Transmit FIFO Empty interrupt mask. This interrupt is set if all data in the Transmit FIFO have been shifted out and the transmit goes into idle mode.
     bit_offset: 5
     bit_size: 1
-    enum: ICLR_TXEMPTY
   - name: TX_UNFL
     description: Target TX FIFO underflow.
     bit_offset: 6
     bit_size: 1
-    enum: ICLR_TX_UNFL
   - name: RX_OVFL
     description: Target RX FIFO overflow.
     bit_offset: 7
     bit_size: 1
-    enum: ICLR_RX_OVFL
   - name: GENCALL
     description: General Call Interrupt.
     bit_offset: 8
     bit_size: 1
-    enum: ICLR_GENCALL
   - name: START
     description: Target START Detection Interrupt.
     bit_offset: 9
     bit_size: 1
-    enum: ICLR_START
   - name: STOP
     description: Target STOP Detection Interrupt.
     bit_offset: 10
     bit_size: 1
-    enum: ICLR_STOP
   - name: PEC_RX_ERR
     description: Target RX Pec Error Interrupt.
     bit_offset: 11
     bit_size: 1
-    enum: ICLR_PEC_RX_ERR
   - name: TIMEOUTA
     description: Timeout A interrupt.
     bit_offset: 12
     bit_size: 1
-    enum: ICLR_TIMEOUTA
   - name: TIMEOUTB
     description: Timeout B Interrupt.
     bit_offset: 13
     bit_size: 1
-    enum: ICLR_TIMEOUTB
   - name: DMA_DONE_RX
     description: DMA Done on Event Channel RX.
     bit_offset: 15
     bit_size: 1
-    enum: ICLR_DMA_DONE_RX
   - name: DMA_DONE_TX
     description: DMA Done on Event Channel TX.
     bit_offset: 16
     bit_size: 1
-    enum: ICLR_DMA_DONE_TX
   - name: ARBLOST
     description: Arbitration Lost Interrupt.
     bit_offset: 17
     bit_size: 1
-    enum: ICLR_ARBLOST
 fieldset/IFLS:
   description: Interrupt FIFO Level Select Register.
   fields:
@@ -802,7 +746,6 @@ fieldset/IFLS:
     description: TX FIFO CLEAR. Setting this bit will clear the TX FIFO contents.
     bit_offset: 3
     bit_size: 1
-    enum: IFLS_TXCLR
   - name: RXIFLSEL
     description: 'FIFO Level Select for generating events (interrupt/dma). Note: for undefined settings the default configuration is used.'
     bit_offset: 4
@@ -812,7 +755,6 @@ fieldset/IFLS:
     description: RX FIFO CLEAR. Setting this bit will clear the RX FIFO contents.
     bit_offset: 7
     bit_size: 1
-    enum: IFLS_RXCLR
 fieldset/IIDX:
   description: Interrupt index.
   fields:
@@ -840,7 +782,6 @@ fieldset/OAR:
     description: Own Address Enable.
     bit_offset: 14
     bit_size: 1
-    enum: OAREN
   - name: MODE
     description: This bit selects the adressing mode to be used. When 0, 7-bit addressing is used. When 1, 10-bit addressing is used.
     bit_offset: 15
@@ -857,7 +798,6 @@ fieldset/OAR2:
     description: Own Address 2 Enable.
     bit_offset: 7
     bit_size: 1
-    enum: OAR2EN
   - name: OAR2_MASK
     description: 'Own Address 2 Mask: This field specifies bits A6 through A0 of the Target address. The bits with value 1 in SOAR2.OAR2_MASK field will make the corresponding incoming address bits to match by default regardless of the value inside SOAR2.OAR2 i.e. corresponding SOAR2.OAR2 bit is a dont care.'
     bit_offset: 16
@@ -886,7 +826,6 @@ fieldset/PECCTL:
     description: PEC Enable This bit enables the SMB Packet Error Checking (PEC). When enabled the PEC is calculated on all bits except the Start, Stop, Ack and Nack. The PEC LSFR and the Byte Counter is set to 0 when the State Machine is in the IDLE state, which occur following a Stop or when a timeout occurs. The Counter is also set to 0 after the PEC byte is sent or received. Note that the NACK is automatically send following a PEC byte that results in a PEC error. The PEC Polynomial is x^8 + x^2 + x^1 + 1.
     bit_offset: 12
     bit_size: 1
-    enum: PECEN
 fieldset/PECSR:
   description: PEC status register.
   fields:
@@ -993,7 +932,6 @@ fieldset/SR:
     description: Status of ACK Override Enable.
     bit_offset: 15
     bit_size: 1
-    enum: SR_ACKOEN
   - name: ADDRMATCH
     description: Indicates the address for which Target address match happened.
     bit_offset: 16
@@ -1020,7 +958,6 @@ fieldset/TIMEOUT_CTL:
     description: Timeout Counter A Enable.
     bit_offset: 15
     bit_size: 1
-    enum: TCNTAEN
   - name: TCNTLB
     description: 'Timeout Count B Load: Counter B is used for SCL High Detection. This field contains the upper 8 bits of a 12-bit pre-load value for the Timeout B count. NOTE: The value of CNTLB must be greater than 1h. Each count is equal to 1* clock period. For example, with 10MHz functional clock one timeout period will be equal to1*100ns.'
     bit_offset: 16
@@ -1029,7 +966,6 @@ fieldset/TIMEOUT_CTL:
     description: Timeout Counter B Enable.
     bit_offset: 31
     bit_size: 1
-    enum: TCNTBEN
 fieldset/TTXDATA:
   description: I2C TXData.
   fields:
@@ -1037,60 +973,6 @@ fieldset/TTXDATA:
     description: Transmit Data This byte contains the data to be transferred during the next transaction.
     bit_offset: 0
     bit_size: 8
-enum/ACKCTL_ACKOEN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: A response in not provided.
-    value: 0
-  - name: ENABLE
-    description: An ACK or NACK is sent according to the value written to the ACKOVAL bit.
-    value: 1
-enum/ACKOEN_ON_PECDONE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: No special behavior.
-    value: 0
-  - name: ENABLE
-    description: When set this bit will automatically turn on the Target ACKOEN field following the ACK/NACK of the received PEC byte.
-    value: 1
-enum/ACKOEN_ON_PECNEXT:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: No special behavior.
-    value: 0
-  - name: ENABLE
-    description: When set this bit will automatically turn on the Target ACKOEN field following the ACK/NACK of the byte received just prior to the PEC byte. Note that when ACKOEN is set the PEC byte will not automatically be ACKed/NACKed by the State Machine and FW must perform this function by writing Target_SACKCTL.
-    value: 1
-enum/ACKOEN_ON_START:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: No special behavior.
-    value: 0
-  - name: ENABLE
-    description: When set this bit will automatically turn on the Target ACKOEN field following a Start Condition.
-    value: 1
-enum/ACKOVAL:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: An ACK is sent indicating valid data or command.
-    value: 0
-  - name: ENABLE
-    description: A NACK is sent indicating invalid data or command.
-    value: 1
-enum/AGFEN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Analog Glitch Filter disable.
-    value: 0
-  - name: ENABLE
-    description: Analog Glitch Filter enable.
-    value: 1
 enum/BUSBSY:
   bit_size: 1
   variants:
@@ -1099,24 +981,6 @@ enum/BUSBSY:
     value: 0
   - name: SET
     description: The I2C Bus is busy. This is cleared on a timeout.
-    value: 1
-enum/BUSCLK_SEL:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Does not select this clock as a source.
-    value: 0
-  - name: ENABLE
-    description: Select this clock as a source.
-    value: 1
-enum/CLKSTRETCH:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: clock stretching is disabled.
-    value: 0
-  - name: ENABLE
-    description: clock stretching is enabled.
     value: 1
 enum/CPU_INT_IMASK_ARBLOST:
   bit_size: 1
@@ -1270,159 +1134,6 @@ enum/CPU_INT_IMASK_TX_UNFL:
     value: 0
   - name: SET
     description: Set Interrupt Mask.
-    value: 1
-enum/CPU_INT_ISET_ARBLOST:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt Mask.
-    value: 1
-enum/CPU_INT_ISET_DMA_DONE_RX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set interrupt.
-    value: 1
-enum/CPU_INT_ISET_DMA_DONE_TX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set interrupt.
-    value: 1
-enum/CPU_INT_ISET_GENCALL:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt Mask.
-    value: 1
-enum/CPU_INT_ISET_PEC_RX_ERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set interrupt.
-    value: 1
-enum/CPU_INT_ISET_RXDONE:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt Mask.
-    value: 1
-enum/CPU_INT_ISET_RXFULL:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Clear Interrupt Mask.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_RXTRG:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Clear Interrupt Mask.
-    value: 0
-  - name: SET
-    description: Set Interrupt Mask.
-    value: 1
-enum/CPU_INT_ISET_RX_OVFL:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set interrupt.
-    value: 1
-enum/CPU_INT_ISET_START:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set interrupt.
-    value: 1
-enum/CPU_INT_ISET_STOP:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set interrupt.
-    value: 1
-enum/CPU_INT_ISET_TIMEOUTA:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt Mask.
-    value: 1
-enum/CPU_INT_ISET_TIMEOUTB:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set interrupt.
-    value: 1
-enum/CPU_INT_ISET_TXDONE:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt Mask.
-    value: 1
-enum/CPU_INT_ISET_TXEMPTY:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set Interrupt.
-    value: 1
-enum/CPU_INT_ISET_TXTRG:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Clear Interrupt Mask.
-    value: 0
-  - name: SET
-    description: Set Interrupt Mask.
-    value: 1
-enum/CPU_INT_ISET_TX_UNFL:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: SET
-    description: Set interrupt.
     value: 1
 enum/CPU_INT_MIS_ARBLOST:
   bit_size: 1
@@ -1730,28 +1441,10 @@ enum/CPU_INT_RIS_TX_UNFL:
   - name: SET
     description: Interrupt occured.
     value: 1
-enum/CTR_GENCALL:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Do not respond to a general call.
-    value: 0
-  - name: ENABLE
-    description: Respond to a general call.
-    value: 1
 enum/DMA_TRIG0_IMASK_TXTRG:
   bit_size: 1
   variants:
   - name: CLR
-    description: Clear Interrupt Mask.
-    value: 0
-  - name: SET
-    description: Set Interrupt Mask.
-    value: 1
-enum/DMA_TRIG0_ISET_TXTRG:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
     description: Clear Interrupt Mask.
     value: 0
   - name: SET
@@ -1784,15 +1477,6 @@ enum/DMA_TRIG1_IMASK_RXTRG:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/DMA_TRIG1_ISET_RXTRG:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Clear Interrupt Mask.
-    value: 0
-  - name: SET
-    description: Set Interrupt Mask.
-    value: 1
 enum/DMA_TRIG1_MIS_RXTRG:
   bit_size: 1
   variants:
@@ -1811,42 +1495,6 @@ enum/DMA_TRIG1_RIS_RXTRG:
   - name: SET
     description: Set Interrupt Mask.
     value: 1
-enum/ENABLE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disables module operation.
-    value: 0
-  - name: ENABLE
-    description: Enables module operation.
-    value: 1
-enum/EN_ALRESPADR:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: 'When this bit is 0, the alert response address is not matched. NOTE: it may still be matched if programmed inside SOAR/SOAR2.'
-    value: 0
-  - name: ENABLE
-    description: When this bit is 1, alert response address of 7h000_1100 is always matched by the Target address match logic.
-    value: 1
-enum/EN_DEFDEVADR:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: 'When this bit is 0, the default device address is not matched. NOTE: it may still be matched if programmed inside SOAR/SOAR2.'
-    value: 0
-  - name: ENABLE
-    description: When this bit is 1, default device address of 7h110_0001 is always matched by the Target address match logic.
-    value: 1
-enum/EN_DEFHOSTADR:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: 'When this bit is 0, the default host address is not matched NOTE: it may still be matched if programmed inside SOAR/SOAR2.'
-    value: 0
-  - name: ENABLE
-    description: When this bit is 1, default host address of 7h000_1000 is always matched by the Target address match logic.
-    value: 1
 enum/FREE:
   bit_size: 1
   variants:
@@ -1855,177 +1503,6 @@ enum/FREE:
     value: 0
   - name: RUN
     description: The peripheral ignores the state of the Core Halted input.
-    value: 1
-enum/ICLR_ARBLOST:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Set Interrupt Mask.
-    value: 1
-enum/ICLR_DMA_DONE_RX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear interrupt.
-    value: 1
-enum/ICLR_DMA_DONE_TX:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear interrupt.
-    value: 1
-enum/ICLR_GENCALL:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Set Interrupt Mask.
-    value: 1
-enum/ICLR_PEC_RX_ERR:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_RXDONE:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Set Interrupt Mask.
-    value: 1
-enum/ICLR_RXFULL:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Clear Interrupt Mask.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_RXTRG:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Clear Interrupt Mask.
-    value: 0
-  - name: CLR
-    description: Set Interrupt Mask.
-    value: 1
-enum/ICLR_RX_OVFL:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_START:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear interrupt.
-    value: 1
-enum/ICLR_STOP:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear interrupt.
-    value: 1
-enum/ICLR_TIMEOUTA:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Set Interrupt Mask.
-    value: 1
-enum/ICLR_TIMEOUTB:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_TXDONE:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Set Interrupt Mask.
-    value: 1
-enum/ICLR_TXEMPTY:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/ICLR_TXTRG:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Clear Interrupt Mask.
-    value: 0
-  - name: CLR
-    description: Set Interrupt Mask.
-    value: 1
-enum/ICLR_TX_UNFL:
-  bit_size: 1
-  variants:
-  - name: NO_EFFECT
-    description: Writing 0 has no effect.
-    value: 0
-  - name: CLR
-    description: Clear Interrupt.
-    value: 1
-enum/IFLS_RXCLR:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable FIFO clear.
-    value: 0
-  - name: ENABLE
-    description: Enable FIFO Clear.
-    value: 1
-enum/IFLS_TXCLR:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable FIFO clear.
-    value: 0
-  - name: ENABLE
-    description: Enable FIFO Clear.
     value: 1
 enum/INTEVAL:
   bit_size: 1
@@ -2036,15 +1513,6 @@ enum/INTEVAL:
   - name: EVAL
     description: The interrupt or event line is in software mode. Software must clear the RIS.
     value: 1
-enum/MFCLK_SEL:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Does not select this clock as a source.
-    value: 0
-  - name: ENABLE
-    description: Select this clock as a source.
-    value: 1
 enum/MODE:
   bit_size: 1
   variants:
@@ -2054,15 +1522,6 @@ enum/MODE:
   - name: MODE10
     description: Enable 10-bit addressing.
     value: 1
-enum/OAR2EN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: The alternate address is disabled.
-    value: 0
-  - name: ENABLE
-    description: Enables the use of the alternate address in the OAR2 field.
-    value: 1
 enum/OAR2SEL:
   bit_size: 1
   variants:
@@ -2071,24 +1530,6 @@ enum/OAR2SEL:
     value: 0
   - name: SET
     description: OAR2 address matched and ACKed by the Target.
-    value: 1
-enum/OAREN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable OAR address.
-    value: 0
-  - name: ENABLE
-    description: Enable OAR address.
-    value: 1
-enum/PECEN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: PEC transmission and check is disabled.
-    value: 0
-  - name: ENABLE
-    description: PEC transmission and check is enabled.
     value: 1
 enum/PECSTS_CHECK:
   bit_size: 1
@@ -2192,15 +1633,6 @@ enum/RXFF:
   - name: SET
     description: If the FIFO is disabled (FEN is 0), the receive holding register is full. If the FIFO is enabled (FEN is 1), the receive FIFO is full.
     value: 1
-enum/RXFULL_ON_RREQ:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: When 0, RIS:SRXFULL will be set when only the Target RX FIFO is full. This allows the SRXFULL interrupt to be used to indicate that the I2C bus is being clock stretched and that the FW must either read the RX FIFO or ACK/NACK the current Rx byte.
-    value: 0
-  - name: ENABLE
-    description: When 1, RIS:SRXFULL will be set when the Target State Machine is in the RX_WAIT or RX_ACK_WAIT states which occurs when the I2C transaction is clock stretched because the RX FIFO is full or the ACKOEN has been set and the state machine is waiting for FW to ACK/NACK the current byte.
-    value: 1
 enum/RXIFLSEL:
   bit_size: 3
   variants:
@@ -2242,15 +1674,6 @@ enum/SOFT:
     value: 0
   - name: DELAYED
     description: The peripheral blocks the debug freeze until it has reached a boundary where it can resume without corruption.
-    value: 1
-enum/SR_ACKOEN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: ACK override is disabled.
-    value: 0
-  - name: ENABLE
-    description: ACK override was enabled in design.
     value: 1
 enum/SR_RXCLR:
   bit_size: 1
@@ -2342,33 +1765,6 @@ enum/STAT:
   - name: DMA_PREIRQ_TX
     description: DMA PRE IRQ INTERRUPT.
     value: 20
-enum/SUSPEND:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Functional mode resumed.
-    value: 0
-  - name: ENABLE
-    description: External communication suspended.
-    value: 1
-enum/TCNTAEN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable Timeout Counter B.
-    value: 0
-  - name: ENABLE
-    description: Enable Timeout Counter B.
-    value: 1
-enum/TCNTBEN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: Disable Timeout Counter B.
-    value: 0
-  - name: ENABLE
-    description: Enable Timeout Counter B.
-    value: 1
 enum/TREQ:
   bit_size: 1
   variants:
@@ -2377,15 +1773,6 @@ enum/TREQ:
     value: 0
   - name: SET
     description: I2C Target is addressed as a transmitter and is using clock stretching to delay the Controller until data has been written to the TXDATA FIFO (TX FIFO is empty).
-    value: 1
-enum/TXEMPTY_ON_TREQ:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: When 0, RIS:TXEMPTY will be set when only the Target TX FIFO is empty. This allows the TXEMPTY interrupt to be used to indicate that the I2C bus is being clock stretched and that Target TX data is required.
-    value: 0
-  - name: ENABLE
-    description: When 1, RIS:TXEMPTY will be set when the Target State Machine is in the TX_WAIT state which occurs when the TX FIFO is empty AND the I2C transaction is clock stretched waiting for the FIFO to receive data.
     value: 1
 enum/TXFE:
   bit_size: 1
@@ -2437,31 +1824,4 @@ enum/TXMODE:
     value: 0
   - name: SET
     description: State Machine is in TX_DATA, TX_WAIT, TX_ACK or ADDR_ACK state with the bus direction set to read.
-    value: 1
-enum/TXTRIG_TXMODE:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: No special behavior.
-    value: 0
-  - name: ENABLE
-    description: When 1, RIS:TXTRG will be set when the Target TX FIFO has reached the trigger level AND the Target State Machine is in the TXMODE as defined in the SSR register. When cleared RIS:TXTRG will be set when the Target TX FIFO is at or above the trigger level. This setting can be used to hold off the TX DMA until a transaction starts. This allows the DMA to be configured when the I2C is idle but have it wait till the transaction starts to load the Target TX FIFO, so it can load from a memory buffer that might be changing over time.
-    value: 1
-enum/TXWAIT_STALE_TXFIFO:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: When 0, the TX FIFO empty signal to the Target State Machine indicates that the TX FIFO is empty.
-    value: 0
-  - name: ENABLE
-    description: When 1, the TX FIFO empty signal to the Target State Machine will indicate that the TX FIFO is empty or that the TX FIFO data is stale. The TX FIFO data is determined to be stale when there is data in the TX FIFO when the Target State Machine leaves the TXMODE as defined in the SSR register. This can occur is a Stop or timeout occur when there are bytes left in the TX FIFO.
-    value: 1
-enum/WUEN:
-  bit_size: 1
-  variants:
-  - name: DISABLE
-    description: When 0, the Target is not allowed to clock stretch on START detection.
-    value: 0
-  - name: ENABLE
-    description: When 1, the Target is allowed to clock stretch on START detection and wait for faster clock to be abvailable. This allows clean wake up support for I2C in low power mode use cases.
     value: 1
