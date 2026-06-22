@@ -28,7 +28,8 @@ const GENERATE_PERIPHERALS: &[PeripheralType] = &[
     PeripheralType::UnicommUart,
     PeripheralType::UnicommSpi,
     PeripheralType::UnicommI2CC,
-    PeripheralType::UnicommI2CT
+    PeripheralType::UnicommI2CT,
+    PeripheralType::Usbfs
 ];
 
 pub fn generate(chip: &Chip, all_versions: &mut BTreeMap<String, BTreeSet<String>>) -> TokenStream {
