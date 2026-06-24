@@ -76,6 +76,7 @@ block/CSR:
     description: USB Host Transmit Interval Endpoint [n].
     byte_offset: 11
     bit_size: 8
+    fieldset: TXINTERVAL
   - name: RXTYPE
     description: USB Host Configure Receive Type Endpoint [n].
     byte_offset: 12
@@ -85,6 +86,7 @@ block/CSR:
     description: USB Host Receive Polling Interval Endpoint [n].
     byte_offset: 13
     bit_size: 8
+    fieldset: RXINTERVAL
   - name: FIFOSZ
     description: USB TX and RX FIFO Size Endpoint [n].
     byte_offset: 15
@@ -238,56 +240,69 @@ block/USBFS:
     description: Indexed TXMAP.
     byte_offset: 8208
     bit_size: 16
+    fieldset: IDXTXMAXP
   - name: IDXTXCSRL
     description: Indexed TXCSRL.
     byte_offset: 8210
     bit_size: 8
+    fieldset: IDXTXCSRL
   - name: IDXTXCSRH
     description: Indexed TXCSRH.
     byte_offset: 8211
     bit_size: 8
+    fieldset: IDXTXCSRH
   - name: IDXRXMAXP
     description: Indexed RXMAXP.
     byte_offset: 8212
     bit_size: 16
+    fieldset: IDXRXMAXP
   - name: IDXRXCSRL
     description: Indexed RXCSRL.
     byte_offset: 8214
     bit_size: 8
+    fieldset: IDXRXCSRL
   - name: IDXRXCSRH
     description: Indexed RXCSRH.
     byte_offset: 8215
     bit_size: 8
+    fieldset: IDXRXCSRH
   - name: IDXRXCOUNT
     description: Indexed RXCOUNT.
     byte_offset: 8216
     bit_size: 16
+    fieldset: IDXRXCOUNT
   - name: IDXTXTYPE
     description: Indexed TXTYPE.
     byte_offset: 8218
     bit_size: 8
+    fieldset: IDXTXTYPE
   - name: IDXTXINTERVAL
     description: Indexed TXINTERVAL.
     byte_offset: 8219
     bit_size: 8
+    fieldset: IDXTXINTERVAL
   - name: IDXRXTYPE
     description: Indexed RXTYPE.
     byte_offset: 8220
     bit_size: 8
+    fieldset: IDXRXTYPE
   - name: IDXRXINTERVAL
     description: Indexed RXINTERVAL.
     byte_offset: 8221
     bit_size: 8
+    fieldset: IDXRXINTERVAL
   - name: IDXFIFOSZ
     description: Indexed FIFOSZ.
     byte_offset: 8223
     bit_size: 8
+    fieldset: IDXFIFOSZ
   - name: FIFO
     description: USB FIFO Endpoint [n].
     array:
       len: 16
       stride: 4
     byte_offset: 8224
+    fieldset: FIFO
   - name: DEVCTL
     description: USB Device Control.
     byte_offset: 8288
@@ -339,10 +354,12 @@ block/USBFS:
     description: USB Full-Speed Last Transaction to End of Frame Timing.
     byte_offset: 8317
     bit_size: 8
+    fieldset: FSEOF
   - name: LSEOF
     description: USB Low-Speed Last Transaction to End of Frame Timing.
     byte_offset: 8318
     bit_size: 8
+    fieldset: LSEOF
   - name: TADDR
     description: USB Target Address Register for Endpoint [y].
     array:
@@ -482,6 +499,7 @@ fieldset/CSR0H:
     description: Diable PING tokens in data and status phases of a high-speed Control transfer.
     bit_offset: 3
     bit_size: 1
+    enum: DISPING
 fieldset/CSR0L:
   description: USB Control and Status Endpoint 0 Low.
   bit_size: 8
@@ -612,6 +630,9 @@ fieldset/FADDR:
     description: 'FAddr is an 8-bit register that should be written with the 7-bit address of the peripheral part of the transaction. When the USB module is being used in Peripheral mode (DevCtl.D2=0), this register should be written with the address received through a SET_ADDRESS command, which will then be used for decoding the function address in subsequent token packets. Notes: Peripheral Mode Only!!.'
     bit_offset: 0
     bit_size: 7
+fieldset/FIFO:
+  description: USB FIFO Endpoint [n].
+  fields: []
 fieldset/FIFOSZ:
   description: USB TX and RX FIFO Size Endpoint [n].
   bit_size: 8
@@ -634,6 +655,10 @@ fieldset/FRAME:
     description: Frame Number.
     bit_offset: 0
     bit_size: 11
+fieldset/FSEOF:
+  description: USB Full-Speed Last Transaction to End of Frame Timing.
+  bit_size: 8
+  fields: []
 fieldset/ICLR:
   description: Interrupt clear.
   fields:
@@ -717,6 +742,22 @@ fieldset/ICLR:
     description: DMA-Pre interrupt for Trigger USB-D-TX.
     bit_offset: 19
     bit_size: 1
+fieldset/IDXFIFOSZ:
+  description: Indexed FIFOSZ.
+  bit_size: 8
+  fields: []
+fieldset/IDXRXCOUNT:
+  description: Indexed RXCOUNT.
+  bit_size: 16
+  fields: []
+fieldset/IDXRXCSRH:
+  description: Indexed RXCSRH.
+  bit_size: 8
+  fields: []
+fieldset/IDXRXCSRL:
+  description: Indexed RXCSRL.
+  bit_size: 8
+  fields: []
 fieldset/IDXRXFIFOADD:
   description: Indexed USB Receive FIFO Start Address.
   bit_size: 16
@@ -740,6 +781,26 @@ fieldset/IDXRXFIFOSZ:
     bit_offset: 4
     bit_size: 1
     enum: IDXRXFIFOSZ_DPB
+fieldset/IDXRXINTERVAL:
+  description: Indexed RXINTERVAL.
+  bit_size: 8
+  fields: []
+fieldset/IDXRXMAXP:
+  description: Indexed RXMAXP.
+  bit_size: 16
+  fields: []
+fieldset/IDXRXTYPE:
+  description: Indexed RXTYPE.
+  bit_size: 8
+  fields: []
+fieldset/IDXTXCSRH:
+  description: Indexed TXCSRH.
+  bit_size: 8
+  fields: []
+fieldset/IDXTXCSRL:
+  description: Indexed TXCSRL.
+  bit_size: 8
+  fields: []
 fieldset/IDXTXFIFOADD:
   description: Indexed USB Transmit FIFO Start Address.
   bit_size: 16
@@ -763,6 +824,18 @@ fieldset/IDXTXFIFOSZ:
     bit_offset: 4
     bit_size: 1
     enum: IDXTXFIFOSZ_DPB
+fieldset/IDXTXINTERVAL:
+  description: Indexed TXINTERVAL.
+  bit_size: 8
+  fields: []
+fieldset/IDXTXMAXP:
+  description: Indexed TXMAP.
+  bit_size: 16
+  fields: []
+fieldset/IDXTXTYPE:
+  description: Indexed TXTYPE.
+  bit_size: 8
+  fields: []
 fieldset/IIDX:
   description: Interrupt index.
   fields:
@@ -778,82 +851,102 @@ fieldset/IMASK:
     description: Endpoint 0 and the TX Endpoints interrupt.
     bit_offset: 0
     bit_size: 1
+    enum: IMASK_INTRTX
   - name: INTRRX
     description: RX Endpoints interrupt.
     bit_offset: 1
     bit_size: 1
+    enum: IMASK_INTRRX
   - name: INTRUSB
     description: USB Interrupts.
     bit_offset: 2
     bit_size: 1
+    enum: IMASK_INTRUSB
   - name: VUSBPWRDN
     description: VUSB Power Down.
     bit_offset: 3
     bit_size: 1
+    enum: IMASK_VUSBPWRDN
   - name: DMADONEARX
     description: DMA-Done interrupt for Trigger USB-A-RX.
     bit_offset: 4
     bit_size: 1
+    enum: IMASK_DMADONEARX
   - name: DMADONEATX
     description: DMA-Done interrupt for Trigger USB-A-TX.
     bit_offset: 5
     bit_size: 1
+    enum: IMASK_DMADONEATX
   - name: DMADONEBRX
     description: DMA-Done interrupt for Trigger USB-B-RX.
     bit_offset: 6
     bit_size: 1
+    enum: IMASK_DMADONEBRX
   - name: DMADONEBTX
     description: DMA-Done interrupt for Trigger USB-B-TX.
     bit_offset: 7
     bit_size: 1
+    enum: IMASK_DMADONEBTX
   - name: DMADONECRX
     description: DMA-Done interrupt for Trigger USB-C-RX.
     bit_offset: 8
     bit_size: 1
+    enum: IMASK_DMADONECRX
   - name: DMADONECTX
     description: DMA-Done interrupt for Trigger USB-C-TX.
     bit_offset: 9
     bit_size: 1
+    enum: IMASK_DMADONECTX
   - name: DMADONEDRX
     description: DMA-Done interrupt for Trigger USB-D-RX.
     bit_offset: 10
     bit_size: 1
+    enum: IMASK_DMADONEDRX
   - name: DMADONEDTX
     description: DMA-Done interrupt for Trigger USB-D-TX.
     bit_offset: 11
     bit_size: 1
+    enum: IMASK_DMADONEDTX
   - name: DMAPREARX
     description: DMA-Pre interrupt for Trigger USB-A-RX.
     bit_offset: 12
     bit_size: 1
+    enum: IMASK_DMAPREARX
   - name: DMAPREATX
     description: DMA-Pre interrupt for Trigger USB-A-TX.
     bit_offset: 13
     bit_size: 1
+    enum: IMASK_DMAPREATX
   - name: DMAPREBRX
     description: DMA-Pre interrupt for Trigger USB-B-RX.
     bit_offset: 14
     bit_size: 1
+    enum: IMASK_DMAPREBRX
   - name: DMAPREBTX
     description: DMA-Pre interrupt for Trigger USB-B-TX.
     bit_offset: 15
     bit_size: 1
+    enum: IMASK_DMAPREBTX
   - name: DMAPRECRX
     description: DMA-Pre interrupt for Trigger USB-C-RX.
     bit_offset: 16
     bit_size: 1
+    enum: IMASK_DMAPRECRX
   - name: DMAPRECTX
     description: DMA-Pre interrupt for Trigger USB-C-TX.
     bit_offset: 17
     bit_size: 1
+    enum: IMASK_DMAPRECTX
   - name: DMAPREDRX
     description: DMA-Pre interrupt for Trigger USB-D-RX.
     bit_offset: 18
     bit_size: 1
+    enum: IMASK_DMAPREDRX
   - name: DMAPREDTX
     description: DMA-Pre interrupt for Trigger USB-D-TX.
     bit_offset: 19
     bit_size: 1
+    enum: IMASK_DMAPREDTX
 fieldset/ISET:
   description: Interrupt set.
   fields:
@@ -937,6 +1030,10 @@ fieldset/ISET:
     description: DMA-Pre interrupt for Trigger USB-D-TX.
     bit_offset: 19
     bit_size: 1
+fieldset/LSEOF:
+  description: USB Low-Speed Last Transaction to End of Frame Timing.
+  bit_size: 8
+  fields: []
 fieldset/MIS:
   description: Masked interrupt status.
   fields:
@@ -944,82 +1041,102 @@ fieldset/MIS:
     description: Endpoint 0 and the TX Endpoints interrupt.
     bit_offset: 0
     bit_size: 1
+    enum: MIS_INTRTX
   - name: INTRRX
     description: RX Endpoints interrupt.
     bit_offset: 1
     bit_size: 1
+    enum: MIS_INTRRX
   - name: INTRUSB
     description: USB Interrupts.
     bit_offset: 2
     bit_size: 1
+    enum: MIS_INTRUSB
   - name: VUSBPWRDN
     description: VUSB Power Down.
     bit_offset: 3
     bit_size: 1
+    enum: MIS_VUSBPWRDN
   - name: DMADONEARX
     description: DMA-Done interrupt for Trigger USB-A-RX.
     bit_offset: 4
     bit_size: 1
+    enum: MIS_DMADONEARX
   - name: DMADONEATX
     description: DMA-Done interrupt for Trigger USB-A-TX.
     bit_offset: 5
     bit_size: 1
+    enum: MIS_DMADONEATX
   - name: DMADONEBRX
     description: DMA-Done interrupt for Trigger USB-B-RX.
     bit_offset: 6
     bit_size: 1
+    enum: MIS_DMADONEBRX
   - name: DMADONEBTX
     description: DMA-Done interrupt for Trigger USB-B-TX.
     bit_offset: 7
     bit_size: 1
+    enum: MIS_DMADONEBTX
   - name: DMADONECRX
     description: DMA-Done interrupt for Trigger USB-C-RX.
     bit_offset: 8
     bit_size: 1
+    enum: MIS_DMADONECRX
   - name: DMADONECTX
     description: DMA-Done interrupt for Trigger USB-C-TX.
     bit_offset: 9
     bit_size: 1
+    enum: MIS_DMADONECTX
   - name: DMADONEDRX
     description: DMA-Done interrupt for Trigger USB-D-RX.
     bit_offset: 10
     bit_size: 1
+    enum: MIS_DMADONEDRX
   - name: DMADONEDTX
     description: DMA-Done interrupt for Trigger USB-D-TX.
     bit_offset: 11
     bit_size: 1
+    enum: MIS_DMADONEDTX
   - name: DMAPREARX
     description: DMA-Pre interrupt for Trigger USB-A-RX.
     bit_offset: 12
     bit_size: 1
+    enum: MIS_DMAPREARX
   - name: DMAPREATX
     description: DMA-Pre interrupt for Trigger USB-A-TX.
     bit_offset: 13
     bit_size: 1
+    enum: MIS_DMAPREATX
   - name: DMAPREBRX
     description: DMA-Pre interrupt for Trigger USB-B-RX.
     bit_offset: 14
     bit_size: 1
+    enum: MIS_DMAPREBRX
   - name: DMAPREBTX
     description: DMA-Pre interrupt for Trigger USB-B-TX.
     bit_offset: 15
     bit_size: 1
+    enum: MIS_DMAPREBTX
   - name: DMAPRECRX
     description: DMA-Pre interrupt for Trigger USB-C-RX.
     bit_offset: 16
     bit_size: 1
+    enum: MIS_DMAPRECRX
   - name: DMAPRECTX
     description: DMA-Pre interrupt for Trigger USB-C-TX.
     bit_offset: 17
     bit_size: 1
+    enum: MIS_DMAPRECTX
   - name: DMAPREDRX
     description: DMA-Pre interrupt for Trigger USB-D-RX.
     bit_offset: 18
     bit_size: 1
+    enum: MIS_DMAPREDRX
   - name: DMAPREDTX
     description: DMA-Pre interrupt for Trigger USB-D-TX.
     bit_offset: 19
     bit_size: 1
+    enum: MIS_DMAPREDTX
 fieldset/MISC:
   description: USB Miscellaneous Register.
   bit_size: 8
@@ -1084,6 +1201,16 @@ fieldset/PWREN:
     bit_offset: 24
     bit_size: 8
     enum: PWREN_KEY
+  - name: KEY
+    description: KEY to allow Power State Change 26h = KEY to allow write access to this register
+    bit_offset: 24
+    bit_size: 8
+    enum: PWREN_KEY
+  - name: KEY
+    description: KEY to allow Power State Change 26h = KEY to allow write access to this register
+    bit_offset: 24
+    bit_size: 8
+    enum: PWREN_KEY
 fieldset/RAMINFO:
   description: USB FIFO Buffer RAM Information.
   bit_size: 8
@@ -1100,82 +1227,102 @@ fieldset/RIS:
     description: Endpoint 0 and the TX Endpoints interrupt.
     bit_offset: 0
     bit_size: 1
+    enum: RIS_INTRTX
   - name: INTRRX
     description: RX Endpoints interrupt.
     bit_offset: 1
     bit_size: 1
+    enum: RIS_INTRRX
   - name: INTRUSB
     description: USB Interrupts.
     bit_offset: 2
     bit_size: 1
+    enum: RIS_INTRUSB
   - name: VUSBPWRDN
     description: VUSB Power Down.
     bit_offset: 3
     bit_size: 1
+    enum: RIS_VUSBPWRDN
   - name: DMADONEARX
     description: DMA-Done interrupt for Trigger USB-A-RX.
     bit_offset: 4
     bit_size: 1
+    enum: RIS_DMADONEARX
   - name: DMADONEATX
     description: DMA-Done interrupt for Trigger USB-A-TX.
     bit_offset: 5
     bit_size: 1
+    enum: RIS_DMADONEATX
   - name: DMADONEBRX
     description: DMA-Done interrupt for Trigger USB-B-RX.
     bit_offset: 6
     bit_size: 1
+    enum: RIS_DMADONEBRX
   - name: DMADONEBTX
     description: DMA-Done interrupt for Trigger USB-B-TX.
     bit_offset: 7
     bit_size: 1
+    enum: RIS_DMADONEBTX
   - name: DMADONECRX
     description: DMA-Done interrupt for Trigger USB-C-RX.
     bit_offset: 8
     bit_size: 1
+    enum: RIS_DMADONECRX
   - name: DMADONECTX
     description: DMA-Done interrupt for Trigger USB-C-TX.
     bit_offset: 9
     bit_size: 1
+    enum: RIS_DMADONECTX
   - name: DMADONEDRX
     description: DMA-Done interrupt for Trigger USB-D-RX.
     bit_offset: 10
     bit_size: 1
+    enum: RIS_DMADONEDRX
   - name: DMADONEDTX
     description: DMA-Done interrupt for Trigger USB-D-TX.
     bit_offset: 11
     bit_size: 1
+    enum: RIS_DMADONEDTX
   - name: DMAPREARX
     description: DMA-Pre interrupt for Trigger USB-A-RX.
     bit_offset: 12
     bit_size: 1
+    enum: RIS_DMAPREARX
   - name: DMAPREATX
     description: DMA-Pre interrupt for Trigger USB-A-TX.
     bit_offset: 13
     bit_size: 1
+    enum: RIS_DMAPREATX
   - name: DMAPREBRX
     description: DMA-Pre interrupt for Trigger USB-B-RX.
     bit_offset: 14
     bit_size: 1
+    enum: RIS_DMAPREBRX
   - name: DMAPREBTX
     description: DMA-Pre interrupt for Trigger USB-B-TX.
     bit_offset: 15
     bit_size: 1
+    enum: RIS_DMAPREBTX
   - name: DMAPRECRX
     description: DMA-Pre interrupt for Trigger USB-C-RX.
     bit_offset: 16
     bit_size: 1
+    enum: RIS_DMAPRECRX
   - name: DMAPRECTX
     description: DMA-Pre interrupt for Trigger USB-C-TX.
     bit_offset: 17
     bit_size: 1
+    enum: RIS_DMAPRECTX
   - name: DMAPREDRX
     description: DMA-Pre interrupt for Trigger USB-D-RX.
     bit_offset: 18
     bit_size: 1
+    enum: RIS_DMAPREDRX
   - name: DMAPREDTX
     description: DMA-Pre interrupt for Trigger USB-D-TX.
     bit_offset: 19
     bit_size: 1
+    enum: RIS_DMAPREDTX
 fieldset/RQPKTCOUNT:
   description: USB Request Packet Count in Block Transfer Endpoint [n].
   fields:
@@ -1190,12 +1337,24 @@ fieldset/RSTCTL:
     description: Assert reset to the peripheral.
     bit_offset: 0
     bit_size: 1
+    enum: RESETASSERT
   - name: RESETSTKYCLR
     description: Clear the RESETSTKY bit in the STAT register.
     bit_offset: 1
     bit_size: 1
+    enum: RESETSTKYCLR
   - name: KEY
     description: Key to unlock this register.
+    bit_offset: 24
+    bit_size: 8
+    enum: RESET_KEY
+  - name: KEY
+    description: Unlock key B1h = KEY to allow write access to this register
+    bit_offset: 24
+    bit_size: 8
+    enum: RESET_KEY
+  - name: KEY
+    description: Unlock key B1h = KEY to allow write access to this register
     bit_offset: 24
     bit_size: 8
     enum: RESET_KEY
@@ -1380,6 +1539,10 @@ fieldset/RXIE:
     description: Recieve Endpoint 7 Interrupt Enable.
     bit_offset: 7
     bit_size: 1
+fieldset/RXINTERVAL:
+  description: USB Host Receive Polling Interval Endpoint [n].
+  bit_size: 8
+  fields: []
 fieldset/RXIS:
   description: USB Receive Interrupt Status.
   bit_size: 16
@@ -1453,6 +1616,7 @@ fieldset/STAT:
     description: This bit indicates, if the peripheral was reset, since this bit was cleared by RESETSTKYCLR in the RSTCTL register.
     bit_offset: 16
     bit_size: 1
+    enum: RESETSTKY
 fieldset/TESTMODE:
   description: USB Test Mode.
   bit_size: 8
@@ -1650,6 +1814,10 @@ fieldset/TXIE:
     description: Transmit Endpoint 7 Interrupt Enable.
     bit_offset: 7
     bit_size: 1
+fieldset/TXINTERVAL:
+  description: USB Host Transmit Interval Endpoint [n].
+  bit_size: 8
+  fields: []
 fieldset/TXIS:
   description: USB Transmit Interrupt Status.
   bit_size: 16
@@ -1915,6 +2083,15 @@ enum/DEVCTL_HOST:
     value: 0
   - name: HOST
     description: The USB controller is acting as a Host.
+    value: 1
+enum/DISPING:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Ping is allowed.
+    value: 0
+  - name: SET
+    description: Ping is not allowed.
     value: 1
 enum/EPIDX:
   bit_size: 4
@@ -3593,6 +3770,186 @@ enum/IDXTXFIFOSZ_SIZE:
   - name: BYTES_2048
     description: FIFO size 2048-byte.
     value: 8
+enum/IMASK_DMADONEARX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMADONEATX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMADONEBRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMADONEBTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMADONECRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMADONECTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMADONEDRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMADONEDTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMAPREARX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMAPREATX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMAPREBRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMAPREBTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMAPRECRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMAPRECTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMAPREDRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_DMAPREDTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_INTRRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_INTRTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_INTRUSB:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
+enum/IMASK_VUSBPWRDN:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt Disabled.
+    value: 0
+  - name: SET
+    description: Interrupt Enabled.
+    value: 1
 enum/INCOMPNAKTO:
   bit_size: 1
   variants:
@@ -3619,6 +3976,186 @@ enum/ISOUP:
     value: 0
   - name: WAIT_SOF
     description: The USB controller waits for an SOF token.
+    value: 1
+enum/MIS_DMADONEARX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMADONEATX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMADONEBRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMADONEBTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMADONECRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMADONECTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMADONEDRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMADONEDTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMAPREARX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMAPREATX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMAPREBRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMAPREBTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMAPRECRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMAPRECTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMAPREDRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_DMAPREDTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_INTRRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_INTRTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_INTRUSB:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/MIS_VUSBPWRDN:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
     value: 1
 enum/MODE:
   bit_size: 1
@@ -3664,11 +4201,218 @@ enum/RAMBITS:
   - name: RAM_4KB
     description: USB FIFO RAM size is 4kB.
     value: 10
+enum/RESETASSERT:
+  bit_size: 1
+  variants:
+  - name: NOP
+    description: Writing 0 has no effect.
+    value: 0
+  - name: ASSERT
+    description: Assert reset.
+    value: 1
+enum/RESETSTKY:
+  bit_size: 1
+  variants:
+  - name: NORES
+    description: The peripheral has not been reset since this bit was last cleared by RESETSTKYCLR in the RSTCTL register.
+    value: 0
+  - name: RESET
+    description: The peripheral was reset since the last bit clear.
+    value: 1
+enum/RESETSTKYCLR:
+  bit_size: 1
+  variants:
+  - name: NOP
+    description: Writing 0 has no effect.
+    value: 0
+  - name: CLR
+    description: Clear reset sticky bit.
+    value: 1
 enum/RESET_KEY:
   bit_size: 8
   variants:
   - name: KEY
     value: 177
+enum/RIS_DMADONEARX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMADONEATX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMADONEBRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMADONEBTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMADONECRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMADONECTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMADONEDRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMADONEDTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMAPREARX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMAPREATX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMAPREBRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMAPREBTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMAPRECRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMAPRECTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMAPREDRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_DMAPREDTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_INTRRX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_INTRTX:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_INTRUSB:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
+enum/RIS_VUSBPWRDN:
+  bit_size: 1
+  variants:
+  - name: CLR
+    description: Interrupt did not occur.
+    value: 0
+  - name: SET
+    description: Interrupt occured.
+    value: 1
 enum/RXCSRH_DMAMOD:
   bit_size: 1
   variants:
