@@ -200,6 +200,18 @@ block/SYSCTL:
     byte_offset: 4908
     access: Write
     fieldset: FCCCMD
+  - name: USBFLLCTL
+    description: USB FLL control register
+    byte_offset: 4928
+    fieldset: USBFLLCTL
+  - name: USBFLLADJ
+    description: USB FLL Manual adjustment register
+    byte_offset: 4932
+    fieldset: USBFLLADJ
+  - name: USBFLLSTAT
+    description: USB FLL status register
+    byte_offset: 4936
+    fieldset: USBFLLSTAT
   - name: PMUOPAMP
     description: GPAMP control.
     byte_offset: 4992
@@ -942,6 +954,55 @@ fieldset/SYSTEMCFG:
     description: FLASHECCRSTDIS specifies whether a flash ECC double error detect (DED) will trigger a SYSRST or an NMI.
     bit_offset: 2
     bit_size: 1
+fieldset/USBFLLCTL:
+  description: USB FLL configuration
+  fields:
+  - name: CLKEN
+    description: USB Oscillator enable
+    bit_offset: 0
+    bit_size: 1
+  - name: FLLEN
+    description: USB Oscillator FLL enable
+    bit_offset: 1
+    bit_size: 1
+  - name: REFSEL
+    description: Reference clock selection for USBFLL. 0x1=use LFCLK, 0x0=use SOF
+    bit_offset: 8
+    bit_size: 1
+fieldset/USBFLLADJ:
+  description: USB FLL manual adjustment
+  fields:
+  - name: FRQADJ
+    bit_offset: 0
+    bit_size: 6
+    description: Frequency Lock Loop Adjust
+  - name: FRQMOD
+    bit_offset: 8
+    bit_size: 3
+    description: Frequency Lock Loop Modulator Value
+fieldset/USBFLLSTAT:
+  description: USB FLL status
+  fields:
+  - name: CLKRDY
+    bit_offset: 0
+    bit_size: 1
+    description: USB oscillator ready indication.
+  - name: FLLLOCK
+    bit_offset: 1
+    bit_size: 1
+    description: USB FLL lock status indication
+  - name: REFRDY
+    bit_offset: 8
+    bit_size: 1
+    description: Reference Clock for Frequency Lock Loop ready indication
+  - name: FRQADJ
+    description: Current Frequency Lock Loop Adjust
+    bit_offset: 16
+    bit_size: 6
+  - name: FRQMOD
+    description: Current Frequency Lock Loop Modulator Value
+    bit_offset: 24
+    bit_size: 3
 fieldset/WRITELOCK:
   description: SYSCTL register write lockout.
   fields:
